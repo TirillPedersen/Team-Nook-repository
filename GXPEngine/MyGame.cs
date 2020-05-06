@@ -10,6 +10,9 @@ public class MyGame : Game
         //Set FPS to 60 for consistency
         targetFps = 60;
 
+        MarketStands marketStands = new MarketStands(450,450);
+        AddChild(marketStands);
+
         //LevelLoader levelLoader = new LevelLoader("Map1.tmx");
         //AddChild(levelLoader);
     }
