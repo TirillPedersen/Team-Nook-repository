@@ -29,3 +29,9 @@ C:\Users\Mauri\Desktop\GXPEngine_2019-2020\GXPEngine\obj\x86\Debug\GXPEngine.csp
 C:\Users\Mauri\Desktop\GXPEngine_2019-2020\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
 C:\Users\Mauri\Desktop\GXPEngine_2019-2020\GXPEngine\obj\x86\Debug\GXPEngine.exe
 C:\Users\Mauri\Desktop\GXPEngine_2019-2020\GXPEngine\obj\x86\Debug\GXPEngine.pdb
+C:\Users\Mauri\Desktop\Team-Nook-repository\GXPEngine\bin\Debug\GXPEngine.exe
+C:\Users\Mauri\Desktop\Team-Nook-repository\GXPEngine\bin\Debug\GXPEngine.pdb
+C:\Users\Mauri\Desktop\Team-Nook-repository\GXPEngine\obj\x86\Debug\GXPEngine.csprojAssemblyReference.cache
+C:\Users\Mauri\Desktop\Team-Nook-repository\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
+C:\Users\Mauri\Desktop\Team-Nook-repository\GXPEngine\obj\x86\Debug\GXPEngine.exe
+C:\Users\Mauri\Desktop\Team-Nook-repository\GXPEngine\obj\x86\Debug\GXPEngine.pdb
