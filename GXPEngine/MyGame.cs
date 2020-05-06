@@ -23,7 +23,7 @@ public class MyGame : Game
 
     void Update()
 	{
-		// Empty
+		// Hello Trill Maurice was here lol
 	}
 
 	static void Main()							// Main() is the first method that's called when the program is run
