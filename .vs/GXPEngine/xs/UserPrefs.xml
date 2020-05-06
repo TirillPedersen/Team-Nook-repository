@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.ItemProperties.GXPEngine PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GXPEngine/MyGame.cs">
     <Files>
-      <File FileName="GXPEngine/MyGame.cs" Line="9" Column="14" />
+      <File FileName="GXPEngine/MyGame.cs" Line="3" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,9 +18,6 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <Debugger.DebugSourceFolders>
-    <String>/Users/bram/Desktop/GXPEngine_files</String>
-  </Debugger.DebugSourceFolders>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
