@@ -13,7 +13,7 @@ class LevelLoader : GameObject
     private Map _mapData;
     private short[,] _tileData;
     //Game specific 
-    public static List<MarketStands> MarketStandList;
+    public static List<MarketStands> MarketStandList = new List<MarketStands>();
 
     public LevelLoader(string mapName)
     {
@@ -25,7 +25,7 @@ class LevelLoader : GameObject
         this.LoadLevel(_mapData);
         this.LoadGameObjects(_mapData);
 
-        MarketStandList = new List<MarketStands>();
+        //MarketStandList = new List<MarketStands>();
     }
 
     //All the tiles get created
