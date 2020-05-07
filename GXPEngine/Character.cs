@@ -87,26 +87,34 @@ namespace GXPEngine
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
             }
-            else if(_position.x > game.width - width/2)
+            else if (_position.x > game.width - width / 2)
             {
                 float a = game.width - width / 2 - _oldPosition.x;
                 float b = _oldPosition.x - _position.x;
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
             }
-            else if(_position.y < height / 2)
+            else if (_position.y < height / 2)
             {
                 float a = height / 2 - _oldPosition.y;
                 float b = _oldPosition.y - _position.y;
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
             }
-            else if(_position.y > game.height - height/2)
+            else if (_position.y > game.height - height / 2)
             {
                 float a = game.height - height / 2 - _oldPosition.y;
                 float b = _oldPosition.y - _position.y;
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
+            }
+        }
+
+        private void BoothCollision()
+        {
+            foreach (MarketStands currentStand in LevelLoader.MarketStandList)
+            {
+                //Implement actual collision here
             }
         }
 

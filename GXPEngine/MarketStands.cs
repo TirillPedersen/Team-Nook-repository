@@ -12,9 +12,10 @@ public class MarketStands : AnimationSprite
     private float mouseY;
 
 
-    public MarketStands(int x, int y) :  base("squares.png", 2, 1)
+    public MarketStands(float givenX, float givenY) : base("squares.png", 2, 1)
     {
-        SetXY(x, y);
+        SetXY(givenX, givenY);
+        SetOrigin(width / 2, height / 2);
     }
 
 
@@ -24,19 +25,9 @@ public class MarketStands : AnimationSprite
         mouseY = Input.mouseY;
     }
 
-    //void mouseHover()
-    //{
-    //    if (mouseX == x && mouseY == y)
-    //    {
-    //        Console.WriteLine("yaay");
-    //    }
-    //}
-
-    void Update()
+    void mouseHover()
     {
-        //void mouseHover();
-        getMousePos();
-        if (mouseX <= x-10 && mouseX >= x + 10 && mouseY <= y - 10 && mouseY >= y + 10)
+        if (mouseX >= x - width / 2 && mouseX <= x + width / 2 && mouseY >= y - height / 2 && mouseY <= y + height / 2)
         {
             Console.WriteLine("on");
         }
@@ -45,12 +36,18 @@ public class MarketStands : AnimationSprite
             Console.WriteLine("off");
         }
     }
-        //for for for loops
-        //ctor for constructor
-        //cw for console writeline
 
-        //int frame = _currentFrame + 1;
-        //if (frame >= _frames) frame = 0;
-        //SetFrame(frame);
+    void Update()
+    {
+        getMousePos();
+        mouseHover();
+    }
+    //for for for loops
+    //ctor for constructor
+    //cw for console writeline
+
+    //int frame = _currentFrame + 1;
+    //if (frame >= _frames) frame = 0;
+    //SetFrame(frame);
 }
 

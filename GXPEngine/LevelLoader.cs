@@ -8,68 +8,61 @@ using GXPEngine;
 class LevelLoader : GameObject
 {
     ////Initialization
-    //private static short _currentTile = 0;
-    //private short _tileWidth, _tileHeight;
-    //private Map _mapData;
-    //private short[,] _tileData;
-    ////private List<List<Block>> _blockListContainer = new List<List<Block>>();
-    ////private static byte _amountOfLists = 0;
-    //public static List<GreenSpawnTube> GreenSpawnTubes = new List<GreenSpawnTube>();
-    //private byte _greenSpawnTubesIteration = 0;
-    //public static HUD HUD;
-    //Mario mario;
+    private static short _currentTile = 0;
+    private short _tileWidth, _tileHeight;
+    private Map _mapData;
+    private short[,] _tileData;
+    //Game specific 
+    public static List<MarketStands> MarketStandList;
 
-    //public LevelLoader(string mapName)
-    //{
-    //    _mapData = MapParser.ReadMap(mapName);
-    //    _tileWidth = (short)_mapData.TileWidth;
-    //    _tileHeight = (short)_mapData.TileHeight;
+    public LevelLoader(string mapName)
+    {
+        _mapData = MapParser.ReadMap(mapName);
+        _tileWidth = (short)_mapData.TileWidth;
+        _tileHeight = (short)_mapData.TileHeight;
 
-    //    //Calls both methods to create tiles and objects
-    //    this.LoadLevel(_mapData);
-    //    this.LoadGameObjects(_mapData);
+        //Calls both methods to create tiles and objects
+        this.LoadLevel(_mapData);
+        this.LoadGameObjects(_mapData);
 
-    //    //Creates CRT-Filter effect
-    //    CRTFilter crtfilter = new CRTFilter();
-    //    AddChild(crtfilter);
-    //}
+        MarketStandList = new List<MarketStands>();
+    }
 
-    ////All the tiles get created
-    //private void LoadLevel(Map _mapData)
-    //{
-    //    //In case no tile-layer was created within Tiled
-    //    if (_mapData.Layers == null) throw new System.SystemException("There is no tile-layer!");
+    //All the tiles get created
+    private void LoadLevel(Map _mapData)
+    {
+        //In case no tile-layer was created within Tiled
+        if (_mapData.Layers == null) throw new System.SystemException("There is no tile-layer!");
 
-    //    Layer mainLayer = _mapData.Layers[0];
+        Layer mainLayer = _mapData.Layers[0];
 
-    //    _tileData = mainLayer.GetTileArray();
+        _tileData = mainLayer.GetTileArray();
 
-    //    for (short row = 0; row < mainLayer.Width; row++)
-    //    {
-    //        for (short column = 0; column < mainLayer.Height; column++)
-    //        {
-    //            _currentTile = _tileData[column, row];
+        for (short row = 0; row < mainLayer.Width; row++)
+        {
+            for (short column = 0; column < mainLayer.Height; column++)
+            {
+                _currentTile = _tileData[column, row];
 
-    //            switch (_currentTile)
-    //            {
-    //                case 1:
-    //                    //BlockRow(numberOfBlocks, column * Block.BlockWidth, row * Block.BlockWidth, true);
-    //                    Block block = new Block();
-    //                    block.x = column * _tileWidth;
-    //                    block.y = row * _tileHeight;
-    //                    AddChild(block);
-    //                    break;
+                switch (_currentTile)
+                {
+                    case 1:
+                        //Block block = new Block();
+                        //block.x = column * _tileWidth;
+                        //block.y = row * _tileHeight;
+                        //AddChild(block);
+                        break;
 
-    //                case 2:
-    //                    Ground ground = new Ground();
-    //                    ground.x = column * _tileWidth;
-    //                    ground.y = row * _tileHeight;
-    //                    AddChild(ground);
-    //                    break;
-    //            }
-    //        }
-    //    }
-    //}
+                    case 2:
+                        //Ground ground = new Ground();
+                        //ground.x = column * _tileWidth;
+                        //ground.y = row * _tileHeight;
+                        //AddChild(ground);
+                        break;
+                }
+            }
+        }
+    }
 
     /*public void BlockRow(byte blockAmount, int blockPositionX, int blockPositionY, bool drawDirection)
     {
@@ -86,44 +79,38 @@ class LevelLoader : GameObject
     }*/
 
     //All objects get created
-    //private void LoadGameObjects(Map _mapData)
-    //{
-    //    //The designer might just want to see tile-layers only, hence the exception gets caught and informs the designer
-    //    try
-    //    {
-    //        ObjectGroup objectLayer = _mapData.ObjectGroups[0];
+    private void LoadGameObjects(Map _mapData)
+    {
+        //The designer might just want to see tile-layers only, hence the exception gets caught and informs the designer
+        try
+        {
+            ObjectGroup objectLayer = _mapData.ObjectGroups[0];
 
-    //        foreach (TiledObject currentTiledObject in objectLayer.Objects)
-    //        {
-    //            switch (currentTiledObject.Name)
-    //            {
-    //                case "Mario":
-    //                    mario = new Mario(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.GetFloatProperty("movementAcceleration"),
-    //                                            currentTiledObject.GetFloatProperty("movementDeceleration"), currentTiledObject.GetFloatProperty("jumpHeight"), currentTiledObject.GetFloatProperty("maxSpeed"));
-    //                    AddChild(mario);
-    //                    break;
+            foreach (TiledObject currentTiledObject in objectLayer.Objects)
+            {
+                switch (currentTiledObject.Name)
+                {
+                    case "MarketStand":
+                        MarketStands stand = new MarketStands(currentTiledObject.X, currentTiledObject.Y);
+                        AddChild(stand);
+                        MarketStandList.Add(stand);
+                        break;
 
-    //                case "GreenSpawnTube":
-    //                    GreenSpawnTubes.Add(new GreenSpawnTube(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.GetBoolProperty("facingDirection"), currentTiledObject.GetIntProperty("spawnInterval")));
-    //                    AddChild(GreenSpawnTubes.ElementAt(_greenSpawnTubesIteration));
-    //                    _greenSpawnTubesIteration++;
-    //                    break;
+                        //case "GreenSpawnTube":
+                        //    break;
 
-    //                case "GreenPickupTube":
-    //                    GreenPickupTube greenPickupTube = new GreenPickupTube(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.GetBoolProperty("facingDirection"));
-    //                    AddChild(greenPickupTube);
-    //                    break;
+                        //case "GreenPickupTube":
+                        //    break;
 
-    //                case "HUD":
-    //                    HUD = new HUD(currentTiledObject.X, currentTiledObject.Y);
-    //                    AddChild(HUD);
-    //                    break;
-    //            }
-    //        }
-    //    }
-    //    catch (NullReferenceException e) { Console.WriteLine("Keep in mind: No object-layer used!" + e); }
-    //}
+                        //case "HUD":
+                        //    break;
+                }
+            }
+        }
+        catch (NullReferenceException e) { Console.WriteLine("Keep in mind: No object-layer used!" + e); }
+    }
 
+    //Used to reset game - not needed for now!
     //private void Reset()
     //{
     //    foreach (GameObject currentGameObject in game.GetChildren())
@@ -138,7 +125,7 @@ class LevelLoader : GameObject
 
     //    HUD.ResetHUD();
     //    mario.ResetCharacter();
-        
+
     //}
 
     //protected void Update()

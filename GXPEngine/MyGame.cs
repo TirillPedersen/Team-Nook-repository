@@ -10,11 +10,11 @@ public class MyGame : Game
         //Set FPS to 60 for consistency
         targetFps = 60;
 
-        MarketStands marketStands = new MarketStands(450,450);
-        AddChild(marketStands);
+        //MarketStands marketStands = new MarketStands(450, 450);
+        //AddChild(marketStands);
 
-        //LevelLoader levelLoader = new LevelLoader("Map1.tmx");
-        //AddChild(levelLoader);
+        LevelLoader levelLoader = new LevelLoader("MarketMap.tmx");
+        AddChild(levelLoader);
     }
     static void Main()                          // Main() is the first method that's called when the program is run
     {
