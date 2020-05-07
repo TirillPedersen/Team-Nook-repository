@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace GXPEngine
@@ -114,7 +115,44 @@ namespace GXPEngine
         {
             foreach (MarketStands currentStand in LevelLoader.MarketStandList)
             {
-                //Implement actual collision here
+                List<Vec2> vectorsToCorners = new List<Vec2>();
+                vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y - currentStand.height / 2));
+                vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.width / 2, currentStand.y - currentStand.height / 2));
+                vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.width / 2, currentStand.y + currentStand.height / 2));
+                vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y + currentStand.height / 2));
+
+                List<Vec2> sideVectors = new List<Vec2>();
+                sideVectors.Add(vectorsToCorners.ElementAt(1) - vectorsToCorners.ElementAt(0));
+                sideVectors.Add(vectorsToCorners.ElementAt(2) - vectorsToCorners.ElementAt(1));
+                sideVectors.Add(vectorsToCorners.ElementAt(3) - vectorsToCorners.ElementAt(2));
+                sideVectors.Add(vectorsToCorners.ElementAt(0) - vectorsToCorners.ElementAt(3));
+
+                byte qwerty = 0;
+
+                foreach (Vec2 currentSideVector in sideVectors)
+                {
+                    Vec2 differenceVector = _position - vectorsToCorners.ElementAt(qwerty);
+                    //float distance = differenceVector.Dot(currentSideVector.Normal());
+
+                    float a = -differenceVector.Dot(currentSideVector.Normal()) - width/2;
+                    float b = _velocity.Dot(currentSideVector.Normal());
+
+                    float currentVectorLength = currentSideVector.Length();
+
+                    float t = a / b;
+
+                    if (a > -width / 2 && a < 0) t = 0;
+
+                    if(b >= 0 && t >= 0 && t <= 1)
+                    {
+                        Vec2 POI = _oldPosition + t * _velocity;
+                        differenceVector = POI - vectorsToCorners.ElementAt(qwerty);
+                        float distanceAlongLine = differenceVector.Dot(currentSideVector.Normalized());
+
+                        if (distanceAlongLine >= 0 && distanceAlongLine <= currentVectorLength) _velocity = new Vec2(0, 0);
+                    }
+                    qwerty++;
+                }
             }
         }
 
@@ -123,6 +161,7 @@ namespace GXPEngine
             AddViscosity();
             PlayerInput();
             BoundaryCollision();
+            BoothCollision();
             EulerIntegration();
             if (_velocity.Length() > 0.1) PlayerAnimation(_currentAnimation);
         }
