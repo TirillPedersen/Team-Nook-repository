@@ -8,12 +8,13 @@ using GXPEngine;
 public class MarketStands : AnimationSprite
 {
     // variables
-    private float mouseX;
-    private float mouseY;
-
+    private float _mouseX;
+    private float _mouseY;
+    public Vec2 _position;
 
     public MarketStands(float givenX, float givenY) : base("vegetableFruitsStand.png", 1, 1)
     {
+        _position = new Vec2(givenX, givenY);
         SetXY(givenX, givenY);
         SetOrigin(width / 2, height / 2);
     }
@@ -21,19 +22,19 @@ public class MarketStands : AnimationSprite
 
     private void getMousePos()
     {
-        mouseX = Input.mouseX;
-        mouseY = Input.mouseY;
+        _mouseX = Input.mouseX;
+        _mouseY = Input.mouseY;
     }
 
     void mouseHover()
     {
-        if (mouseX >= x - width / 2 && mouseX <= x + width / 2 && mouseY >= y - height / 2 && mouseY <= y + height / 2)
+        if (_mouseX >= x - width / 2 && _mouseX <= x + width / 2 && _mouseY >= y - height / 2 && _mouseY <= y + height / 2)
         {
-            Console.WriteLine("on");
+            //Console.WriteLine("on");
         }
         else
         {
-            Console.WriteLine("off");
+            //Console.WriteLine("off");
         }
     }
 
