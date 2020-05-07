@@ -13,6 +13,9 @@ public class MyGame : Game
         //MarketStands marketStands = new MarketStands(450, 450);
         //AddChild(marketStands);
 
+        Ground ground= new Ground(0, 0);
+        AddChild(ground);
+
         LevelLoader levelLoader = new LevelLoader("MarketMap.tmx");
         AddChild(levelLoader);
 

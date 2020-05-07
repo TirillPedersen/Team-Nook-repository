@@ -54,10 +54,10 @@ class LevelLoader : GameObject
                         break;
 
                     case 2:
-                        //Ground ground = new Ground();
-                        //ground.x = column * _tileWidth;
-                        //ground.y = row * _tileHeight;
-                        //AddChild(ground);
+                        Ground ground = new Ground(_currentTile, _currentTile);
+                        ground.x = column * _tileWidth;
+                        ground.y = row * _tileHeight;
+                        AddChild(ground);
                         break;
                 }
             }

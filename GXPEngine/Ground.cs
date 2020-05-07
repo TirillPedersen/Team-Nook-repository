@@ -10,7 +10,8 @@ public class Ground : AnimationSprite
     public Ground(float givenX, float givenY) : base("bricks.png", 1, 1)
     {
         SetXY(givenX, givenY);
-        SetOrigin(width / 2, height / 2);
+        //SetOrigin(width / 2, height / 2);
+        
     }
 
     void Update()

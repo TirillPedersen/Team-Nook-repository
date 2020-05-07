@@ -12,7 +12,7 @@ public class MarketStands : AnimationSprite
     private float mouseY;
 
 
-    public MarketStands(float givenX, float givenY) : base("vegetableFruitsStand.png", 1, 1)
+    public MarketStands(float givenX, float givenY) : base("vegetableFruitsStand.png", 2, 1)
     {
         SetXY(givenX, givenY);
         SetOrigin(width / 2, height / 2);
@@ -30,10 +30,13 @@ public class MarketStands : AnimationSprite
         if (mouseX >= x - width / 2 && mouseX <= x + width / 2 && mouseY >= y - height / 2 && mouseY <= y + height / 2)
         {
             Console.WriteLine("on");
+
+            SetFrame(1);
         }
         else
         {
             Console.WriteLine("off");
+            SetFrame(0);
         }
     }
 
