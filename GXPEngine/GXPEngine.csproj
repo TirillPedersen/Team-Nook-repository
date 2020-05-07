@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="LevelLoader.cs" />
+    <Compile Include="Ground.cs" />
     <Compile Include="MarketStands.cs" />
     <Compile Include="MyGame.cs" />
     <Compile Include="GXPEngine\Canvas.cs" />

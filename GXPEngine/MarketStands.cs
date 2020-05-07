@@ -12,7 +12,7 @@ public class MarketStands : AnimationSprite
     private float mouseY;
 
 
-    public MarketStands(float givenX, float givenY) : base("squares.png", 2, 1)
+    public MarketStands(float givenX, float givenY) : base("vegetableFruitsStand.png", 1, 1)
     {
         SetXY(givenX, givenY);
         SetOrigin(width / 2, height / 2);
