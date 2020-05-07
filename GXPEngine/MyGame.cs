@@ -15,6 +15,7 @@ public class MyGame : Game
 
         LevelLoader levelLoader = new LevelLoader("MarketMap.tmx");
         AddChild(levelLoader);
+
     }
     static void Main()                          // Main() is the first method that's called when the program is run
     {
