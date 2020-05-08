@@ -8,7 +8,7 @@ namespace GXPEngine
 {
     class Character : AnimationSprite
     {
-        private Vec2 _position;
+        public Vec2 Position;
         private Vec2 _oldPosition;
         private Vec2 _velocity;
         private Vec2 _acceleration;
@@ -16,18 +16,20 @@ namespace GXPEngine
         private byte _currentAnimation;
         private float _animationSpeed, _timePassed;
         public Camera CharacterCamera;
+        public Vec2 CharacterOffset;
 
-        public Character() : base("PlayerSpritesheet.png", 4, 3)
+        public Character(float givenX, float givenY) : base("PlayerSpritesheet.png", 4, 3)
         {
             SetOrigin(width / 2, height / 2);
-            _position = new Vec2(150, 150);
+            Position.SetXY(givenX, givenY);
             _velocity = new Vec2(0, 0);
             _acceleration = new Vec2(0, 0);
             _animationSpeed = 0;
             _currentAnimation = 0;
             _timePassed = 0;
-            CharacterCamera = new Camera(0,0, 1920, 1080);
+            CharacterCamera = new Camera(0, 0, game.width, game.height);
             game.AddChild(CharacterCamera);
+            CharacterOffset = Position;
         }
 
         private void PlayerMovement(byte currentInput)
@@ -65,15 +67,15 @@ namespace GXPEngine
 
         private void EulerIntegration()
         {
-            _oldPosition = _position;
+            _oldPosition = Position;
             _velocity += _acceleration;
             if (_velocity.Length() > _maxSpeed)
             {
                 _velocity.Normalize();
                 _velocity *= _maxSpeed;
             }
-            _position += _velocity;
-            SetXY(_position.x, _position.y);
+            Position += _velocity;
+            SetXY(Position.x, Position.y);
         }
 
         private void PlayerAnimation(byte currentAnimation)
@@ -86,34 +88,39 @@ namespace GXPEngine
 
         private void BoundaryCollision()
         {
-            if (_position.x < width / 2)
+            if (Position.x < width / 2)
             {
-                float a = _oldPosition.x - width/2;
-                float b = _oldPosition.x - _position.x;
+                float a = _oldPosition.x - width / 2;
+                float b = _oldPosition.x - Position.x;
                 float POI = a / b;
-                _position = _oldPosition + POI * _velocity;
+                Position = _oldPosition + POI * _velocity;
             }
-            else if (_position.x > game.width - width / 2)
+            else if (Position.x > game.width - width / 2)
             {
                 float a = _oldPosition.x - (game.width - width / 2);
-                float b = _oldPosition.x - _position.x;
+                float b = _oldPosition.x - Position.x;
                 float POI = a / b;
-                _position = _oldPosition + POI * _velocity;
+                Position = _oldPosition + POI * _velocity;
             }
-            else if (_position.y < height / 2)
+            else if (Position.y < height / 2)
             {
                 float a = _oldPosition.y - height / 2;
-                float b = _oldPosition.y - _position.y;
+                float b = _oldPosition.y - Position.y;
                 float POI = a / b;
-                _position = _oldPosition + POI * _velocity;
+                Position = _oldPosition + POI * _velocity;
             }
-            else if (_position.y > game.height - height / 2)
+            else if (Position.y > game.height - height / 2)
             {
                 float a = _oldPosition.y - (game.height - height / 2);
-                float b = _oldPosition.y - _position.y;
+                float b = _oldPosition.y - Position.y;
                 float POI = a / b;
-                _position = _oldPosition + POI * _velocity;
+                Position = _oldPosition + POI * _velocity;
             }
+        }
+
+        public Vec2 CalculateCharacterOffset()
+        {
+            return new Vec2(Position.x - CharacterOffset.x, Position.y - CharacterOffset.y);
         }
 
         private void BoothCollision()
@@ -136,7 +143,7 @@ namespace GXPEngine
 
                 foreach (Vec2 currentSideVector in sideVectors)
                 {
-                    Vec2 differenceVector = _position - vectorsToCorners.ElementAt(currentReferenceCornerVector);
+                    Vec2 differenceVector = Position - vectorsToCorners.ElementAt(currentReferenceCornerVector);
                     //float distance = differenceVector.Dot(currentSideVector.Normal());
 
                     float a = -differenceVector.Dot(currentSideVector.Normal()) - width / 2;
@@ -157,7 +164,7 @@ namespace GXPEngine
                         if (distanceAlongLine >= 0 && distanceAlongLine <= currentVectorLength)
                         {
                             _velocity = new Vec2(0, 0);
-                            _position = POI;
+                            Position = POI;
                         }
                     }
                     currentReferenceCornerVector++;
@@ -180,7 +187,6 @@ namespace GXPEngine
             EulerIntegration();
             if (_velocity.Length() > 0.4f) PlayerAnimation(_currentAnimation);
             else currentFrame = 0;
-            Console.WriteLine(_position);
         }
     }
 }

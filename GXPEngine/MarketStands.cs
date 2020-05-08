@@ -28,19 +28,14 @@ public class MarketStands : AnimationSprite
 
     void mouseHover()
     {
-        if (_mouseX >= x - width / 2 && _mouseX <= x + width / 2 && _mouseY >= y - height / 2 && _mouseY <= y + height / 2)
-        {
-            SetFrame(1);           
-        }
-        else
-        {
-            SetFrame(0);
-        }
+        if (_mouseX >= (x - LevelLoader.character.CalculateCharacterOffset().x) - width / 2 && _mouseX <= (x - LevelLoader.character.CalculateCharacterOffset().x) + width / 2 && _mouseY >= (y - LevelLoader.character.CalculateCharacterOffset().y) - height / 2 && _mouseY <= (y - LevelLoader.character.CalculateCharacterOffset().y) + height / 2) SetFrame(1);
+        else SetFrame(0);
     }
 
     void Update()
     {
         getMousePos();
         mouseHover();
+        Console.WriteLine(LevelLoader.character.CharacterOffset);
     }
 }

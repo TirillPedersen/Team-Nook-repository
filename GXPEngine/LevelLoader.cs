@@ -15,7 +15,7 @@ class LevelLoader : GameObject
     //Game specific
     public static List<MarketStands> MarketStandList = new List<MarketStands>();
     public static List<FishStand> FishStandList = new List<FishStand>();
-    public Character character;
+    public static Character character;
 
 
     public LevelLoader(string mapName)
@@ -27,8 +27,6 @@ class LevelLoader : GameObject
         //Calls both methods to create tiles and objects
         this.LoadLevel(_mapData);
         this.LoadGameObjects(_mapData);
-
-        //MarketStandList = new List<MarketStands>();
     }
 
     //All the tiles get created
@@ -56,12 +54,12 @@ class LevelLoader : GameObject
                         //AddChild(block);
                         break;
 
-                    //case 2:
-                    //    Ground ground = new Ground();
-                    //    ground.x = column * _tileWidth;
-                    //    ground.y = row * _tileHeight;
-                    //    AddChild(ground);
-                    //    break;
+                        //case 2:
+                        //    Ground ground = new Ground();
+                        //    ground.x = column * _tileWidth;
+                        //    ground.y = row * _tileHeight;
+                        //    AddChild(ground);
+                        //    break;
                 }
             }
         }
@@ -106,8 +104,9 @@ class LevelLoader : GameObject
                         break;
 
                     case "Character":
-                        character = new Character();
+                        character = new Character(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(character);
+                        Console.WriteLine("Executed");
                         break;
 
                         //case "GreenPickupTube":
@@ -125,7 +124,7 @@ class LevelLoader : GameObject
     //private void Reset()
     //{
     //    foreach (GameObject currentGameObject in game.GetChildren())
-     //    {
+    //    {
     //        if (currentGameObject is Shellcreeper) currentGameObject.LateDestroy();
     //    }
 

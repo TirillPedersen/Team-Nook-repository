@@ -22,20 +22,14 @@ public class FishStand : AnimationSprite
 
     private void getMousePos()
     {
-        _mouseX = Input.mouseX;
-        _mouseY = Input.mouseY;
+        _mouseX = Input.mouseX + LevelLoader.character.x;
+        _mouseY = Input.mouseY + LevelLoader.character.y;
     }
 
     void mouseHover()
     {
-        if (_mouseX >= x - width / 2 && _mouseX <= x + width / 2 && _mouseY >= y - height / 2 && _mouseY <= y + height / 2)
-        {
-            SetFrame(1);
-        }
-        else
-        {
-            SetFrame(0);
-        }
+        if (_mouseX >= x - width / 2 && _mouseX <= x + width / 2 && _mouseY >= y - height / 2 && _mouseY <= y + height / 2) SetFrame(1);
+        else SetFrame(0);
     }
 
     void Update()
