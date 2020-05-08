@@ -10,6 +10,8 @@ public class MyGame : Game
         //Set FPS to 60 for consistency
         targetFps = 60;
 
+        RenderMain = false;
+
         Ground ground= new Ground(0, 0);
         AddChild(ground);
 

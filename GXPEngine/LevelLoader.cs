@@ -125,7 +125,7 @@ class LevelLoader : GameObject
     //private void Reset()
     //{
     //    foreach (GameObject currentGameObject in game.GetChildren())
-    //    {
+     //    {
     //        if (currentGameObject is Shellcreeper) currentGameObject.LateDestroy();
     //    }
 

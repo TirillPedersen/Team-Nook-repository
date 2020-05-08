@@ -15,6 +15,7 @@ namespace GXPEngine
         private static float _maxSpeed = 5.0f;
         private byte _currentAnimation;
         private float _animationSpeed, _timePassed;
+        public Camera CharacterCamera;
 
         public Character() : base("PlayerSpritesheet.png", 4, 3)
         {
@@ -24,6 +25,9 @@ namespace GXPEngine
             _acceleration = new Vec2(0, 0);
             _animationSpeed = 0;
             _currentAnimation = 0;
+            _timePassed = 0;
+            CharacterCamera = new Camera(0,0, 1920, 1080);
+            game.AddChild(CharacterCamera);
         }
 
         private void PlayerMovement(byte currentInput)
@@ -161,10 +165,16 @@ namespace GXPEngine
             }
         }
 
+        private void CameraMovement()
+        {
+            CharacterCamera.SetXY(x, y);
+        }
+
         protected void Update()
         {
             AddViscosity();
             PlayerInput();
+            CameraMovement();
             BoundaryCollision();
             BoothCollision();
             EulerIntegration();
