@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="8">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="10">
  <tileset firstgid="1" name="Bricks" tilewidth="128" tileheight="128" tilecount="1" columns="1">
   <image source="bricks.png" width="128" height="128"/>
  </tileset>
@@ -7,6 +7,8 @@
   <object id="1" name="MarketStand" x="254.332" y="160" width="128" height="128"/>
   <object id="6" name="MarketStand" x="692" y="632" width="128" height="128" rotation="180"/>
   <object id="7" name="MarketStand" x="692" y="160" width="128" height="128"/>
+  <object id="8" name="Character" x="721.212" y="1018.18" width="112.121" height="178.788"/>
+  <object id="9" x="1287.88" y="1927.27"/>
  </objectgroup>
  <layer id="4" name="Tile Layer 1" width="32" height="32">
   <data encoding="csv">
