@@ -13,7 +13,8 @@ class LevelLoader : GameObject
     private Map _mapData;
     private short[,] _tileData;
     //Game specific 
-    public static List<MarketStands> MarketStandList = new List<MarketStands>();
+    public static List<MarketStands> MarketStandList = new List<MarketStands>(); 
+    public Character character;
 
     public LevelLoader(string mapName)
     {
@@ -96,8 +97,10 @@ class LevelLoader : GameObject
                         MarketStandList.Add(stand);
                         break;
 
-                        //case "GreenSpawnTube":
-                        //    break;
+                        case "Character":
+                        character = new Character();
+                        AddChild(character);
+                            break;
 
                         //case "GreenPickupTube":
                         //    break;
