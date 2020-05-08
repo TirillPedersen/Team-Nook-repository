@@ -14,12 +14,12 @@ namespace GXPEngine
         private Vec2 _acceleration;
         private static float _maxSpeed = 5.0f;
         private byte _currentAnimation;
-        private float _animationSpeed;
+        private float _animationSpeed, _timePassed;
 
-        public Character() : base("Barry.png", 7, 1)
+        public Character() : base("PlayerSpritesheet.png", 4, 3)
         {
             SetOrigin(width / 2, height / 2);
-            _position = new Vec2(50, 50);
+            _position = new Vec2(150, 150);
             _velocity = new Vec2(0, 0);
             _acceleration = new Vec2(0, 0);
             _animationSpeed = 0;
@@ -56,7 +56,7 @@ namespace GXPEngine
         private void AddViscosity()
         {
             _acceleration = new Vec2(0, 0);
-            _velocity *= 0.95f;
+            _velocity *= 0.9f;
         }
 
         private void EulerIntegration()
@@ -74,7 +74,8 @@ namespace GXPEngine
 
         private void PlayerAnimation(byte currentAnimation)
         {
-            if (_velocity.Length() > 1) _animationSpeed = (Time.time / (150 - (int)_velocity.Length() * 15) % 3);
+            _timePassed += Time.deltaTime;
+            if (_velocity.Length() > 1) _animationSpeed = 1 + (Time.time / 70 % 10);
             currentFrame = (int)_animationSpeed;
             rotation = _velocity.GetAngleDegrees();
         }
@@ -83,28 +84,28 @@ namespace GXPEngine
         {
             if (_position.x < width / 2)
             {
-                float a = width / 2 - _oldPosition.x;
+                float a = _oldPosition.x - width/2;
                 float b = _oldPosition.x - _position.x;
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
             }
             else if (_position.x > game.width - width / 2)
             {
-                float a = game.width - width / 2 - _oldPosition.x;
+                float a = _oldPosition.x - (game.width - width / 2);
                 float b = _oldPosition.x - _position.x;
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
             }
             else if (_position.y < height / 2)
             {
-                float a = height / 2 - _oldPosition.y;
+                float a = _oldPosition.y - height / 2;
                 float b = _oldPosition.y - _position.y;
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
             }
             else if (_position.y > game.height - height / 2)
             {
-                float a = game.height - height / 2 - _oldPosition.y;
+                float a = _oldPosition.y - (game.height - height / 2);
                 float b = _oldPosition.y - _position.y;
                 float POI = a / b;
                 _position = _oldPosition + POI * _velocity;
@@ -127,14 +128,14 @@ namespace GXPEngine
                 sideVectors.Add(vectorsToCorners.ElementAt(3) - vectorsToCorners.ElementAt(2));
                 sideVectors.Add(vectorsToCorners.ElementAt(0) - vectorsToCorners.ElementAt(3));
 
-                byte qwerty = 0;
+                byte currentReferenceCornerVector = 0;
 
                 foreach (Vec2 currentSideVector in sideVectors)
                 {
-                    Vec2 differenceVector = _position - vectorsToCorners.ElementAt(qwerty);
+                    Vec2 differenceVector = _position - vectorsToCorners.ElementAt(currentReferenceCornerVector);
                     //float distance = differenceVector.Dot(currentSideVector.Normal());
 
-                    float a = -differenceVector.Dot(currentSideVector.Normal()) - width/2;
+                    float a = -differenceVector.Dot(currentSideVector.Normal()) - width / 2;
                     float b = _velocity.Dot(currentSideVector.Normal());
 
                     float currentVectorLength = currentSideVector.Length();
@@ -143,15 +144,19 @@ namespace GXPEngine
 
                     if (a > -width / 2 && a < 0) t = 0;
 
-                    if(b >= 0 && t >= 0 && t <= 1)
+                    if (b >= 0 && t >= 0 && t <= 1)
                     {
                         Vec2 POI = _oldPosition + t * _velocity;
-                        differenceVector = POI - vectorsToCorners.ElementAt(qwerty);
+                        differenceVector = POI - vectorsToCorners.ElementAt(currentReferenceCornerVector);
                         float distanceAlongLine = differenceVector.Dot(currentSideVector.Normalized());
 
-                        if (distanceAlongLine >= 0 && distanceAlongLine <= currentVectorLength) _velocity = new Vec2(0, 0);
+                        if (distanceAlongLine >= 0 && distanceAlongLine <= currentVectorLength)
+                        {
+                            _velocity = new Vec2(0, 0);
+                            _position = POI;
+                        }
                     }
-                    qwerty++;
+                    currentReferenceCornerVector++;
                 }
             }
         }
@@ -163,7 +168,9 @@ namespace GXPEngine
             BoundaryCollision();
             BoothCollision();
             EulerIntegration();
-            if (_velocity.Length() > 0.1) PlayerAnimation(_currentAnimation);
+            if (_velocity.Length() > 0.4f) PlayerAnimation(_currentAnimation);
+            else currentFrame = 0;
+            Console.WriteLine(_position);
         }
     }
 }
