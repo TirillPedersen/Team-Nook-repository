@@ -31,12 +31,13 @@ public class MarketStands : AnimationSprite
         if (_mouseX >= x - width / 2 && _mouseX <= x + width / 2 && _mouseY >= y - height / 2 && _mouseY <= y + height / 2)
         {
 
-            Console.WriteLine("on");
+            //Console.WriteLine("on");
             SetFrame(1);
+            
         }
         else
         {
-            Console.WriteLine("off");
+            //Console.WriteLine("off");
             SetFrame(0);
         }
     }
@@ -46,11 +47,4 @@ public class MarketStands : AnimationSprite
         getMousePos();
         mouseHover();
     }
-    //for for for loops
-    //ctor for constructor
-    //cw for console writeline
-
-    //int frame = _currentFrame + 1;
-    //if (frame >= _frames) frame = 0;
-    //SetFrame(frame);
 }
