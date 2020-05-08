@@ -14,6 +14,7 @@ class LevelLoader : GameObject
     private short[,] _tileData;
     //Game specific 
     public static List<MarketStands> MarketStandList = new List<MarketStands>();
+    public static List<FishStand> FishStandList = new List<FishStand>();
 
     public LevelLoader(string mapName)
     {
@@ -53,12 +54,12 @@ class LevelLoader : GameObject
                         //AddChild(block);
                         break;
 
-                    case 2:
-                        Ground ground = new Ground(_currentTile, _currentTile);
-                        ground.x = column * _tileWidth;
-                        ground.y = row * _tileHeight;
-                        AddChild(ground);
-                        break;
+                    //case 2:
+                    //    Ground ground = new Ground();
+                    //    ground.x = column * _tileWidth;
+                    //    ground.y = row * _tileHeight;
+                    //    AddChild(ground);
+                    //    break;
                 }
             }
         }
@@ -94,6 +95,12 @@ class LevelLoader : GameObject
                         MarketStands stand = new MarketStands(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(stand);
                         MarketStandList.Add(stand);
+                        break;
+
+                    case "FishStand":
+                        FishStand fishStand = new FishStand(currentTiledObject.X, currentTiledObject.Y);
+                        AddChild(fishStand);
+                        FishStandList.Add(fishStand);
                         break;
 
                         //case "GreenSpawnTube":
