@@ -31,6 +31,7 @@ public class MarketStands : AnimationSprite
         if (_mouseX >= x - width / 2 && _mouseX <= x + width / 2 && _mouseY >= y - height / 2 && _mouseY <= y + height / 2)
         {
             SetFrame(1);           
+            
         }
         else
         {
