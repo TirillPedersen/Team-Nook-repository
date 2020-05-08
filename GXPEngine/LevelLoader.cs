@@ -105,10 +105,10 @@ class LevelLoader : GameObject
                         FishStandList.Add(fishStand);
                         break;
 
-                        case "Character":
+                    case "Character":
                         character = new Character();
                         AddChild(character);
-                            break;
+                        break;
 
                         //case "GreenPickupTube":
                         //    break;

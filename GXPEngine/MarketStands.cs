@@ -30,12 +30,10 @@ public class MarketStands : AnimationSprite
     {
         if (_mouseX >= x - width / 2 && _mouseX <= x + width / 2 && _mouseY >= y - height / 2 && _mouseY <= y + height / 2)
         {
-            //Console.WriteLine("on");
             SetFrame(1);           
         }
         else
         {
-            //Console.WriteLine("off");
             SetFrame(0);
         }
     }
