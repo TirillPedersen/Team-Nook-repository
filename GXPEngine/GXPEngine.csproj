@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="FishStand.cs" />
+    <Compile Include="Fonty.cs" />
     <Compile Include="LevelLoader.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="MarketStands.cs" />
