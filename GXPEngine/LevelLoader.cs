@@ -48,18 +48,9 @@ class LevelLoader : GameObject
                 switch (_currentTile)
                 {
                     case 1:
-                        //Block block = new Block();
-                        //block.x = column * _tileWidth;
-                        //block.y = row * _tileHeight;
-                        //AddChild(block);
+                        Ground ground = new Ground(column * _tileWidth, row * _tileHeight);
+                        AddChild(ground);
                         break;
-
-                        //case 2:
-                        //    Ground ground = new Ground();
-                        //    ground.x = column * _tileWidth;
-                        //    ground.y = row * _tileHeight;
-                        //    AddChild(ground);
-                        //    break;
                 }
             }
         }
@@ -108,12 +99,6 @@ class LevelLoader : GameObject
                         AddChild(character);
                         Console.WriteLine("Executed");
                         break;
-
-                        //case "GreenPickupTube":
-                        //    break;
-
-                        //case "HUD":
-                        //    break;
                 }
             }
         }

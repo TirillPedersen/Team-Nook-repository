@@ -30,6 +30,8 @@ namespace GXPEngine
             CharacterCamera = new Camera(0, 0, game.width, game.height);
             game.AddChild(CharacterCamera);
             CharacterOffset = Position;
+            CharacterOffset.x += 700;
+            CharacterOffset.y += 150;
         }
 
         private void PlayerMovement(byte currentInput)

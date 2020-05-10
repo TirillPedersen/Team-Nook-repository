@@ -32,9 +32,9 @@ public class FishStand : AnimationSprite
         else SetFrame(0);
     }
 
-    void Update()
+    protected void Update()
     {
-        getMousePos();
+        //getMousePos();
         mouseHover();
     }
 }
