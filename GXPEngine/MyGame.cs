@@ -16,8 +16,8 @@ public class MyGame : Game
         Ground ground = new Ground(0, 0);
         AddChild(ground);
 
-        Fonty font = new Fonty(500, 500, 10);
-        AddChild(font);
+        //Fonty font = new Fonty(500, 500, 10);
+        //AddChild(font);
 
         LevelLoader levelLoader = new LevelLoader("MarketMap.tmx");
         AddChild(levelLoader);

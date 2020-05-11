@@ -8,6 +8,7 @@ namespace GXPEngine
     class VegetableFruitStand : MarketStand
     {
         public VegetableFruitStand(float givenX, float givenY) : base(givenX, givenY, "VegetableFruitsStand.png")
-        { }
+        { 
+        }
     }
 }

@@ -77,6 +77,7 @@
     <Compile Include="GXPEngine\AddOns\EasyDraw.cs" />
     <Compile Include="GXPEngine\Core\Collision.cs" />
     <Compile Include="GXPEngine\Vec2.cs" />
+    <Compile Include="Stands\MeatStand.cs" />
     <Compile Include="Stands\VegetableFruitStand.cs" />
   </ItemGroup>
   <ItemGroup>
