@@ -22,13 +22,14 @@ namespace GXPEngine
         {
             SetOrigin(width / 2, height / 2);
             Position.SetXY(givenX, givenY);
+            CharacterCamera = new Camera(0, 0, game.width, game.height);
+            game.AddChild(CharacterCamera);
+            CharacterCamera.SetXY(x, y);
             _velocity = new Vec2(0, 0);
             _acceleration = new Vec2(0, 0);
             _animationSpeed = 0;
             _currentAnimation = 0;
             _timePassed = 0;
-            CharacterCamera = new Camera(0, 0, game.width, game.height);
-            game.AddChild(CharacterCamera);
             CharacterOffset = Position;
             CharacterOffset.x += 700;
             CharacterOffset.y += 150;
@@ -194,10 +195,10 @@ namespace GXPEngine
         {
             AddViscosity();
             PlayerInput();
-            CameraMovement();
             BoundaryCollision();
             BoothCollision();
             EulerIntegration();
+            CameraMovement();
             if (_velocity.Length() > 1.5f) PlayerAnimation(_currentAnimation);
             else currentFrame = 0;
         }
