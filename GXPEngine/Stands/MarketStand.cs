@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using GXPEngine;
 
 
-public class MarketStands : AnimationSprite
+public class MarketStand : AnimationSprite
 {
     // variables
     private float _mouseX;
     private float _mouseY;
     public Vec2 _position;
 
-    public MarketStands(float givenX, float givenY) : base("vegetableFruitsStand.png", 2, 1)
+    public MarketStand(float givenX, float givenY, string fileName, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
     {
         _position = new Vec2(givenX, givenY);
         SetXY(givenX, givenY);
@@ -32,10 +33,9 @@ public class MarketStands : AnimationSprite
         else SetFrame(0);
     }
 
-    void Update()
+    protected void Update()
     {
         getMousePos();
         mouseHover();
-        Console.WriteLine(LevelLoader.character.CharacterOffset);
     }
 }

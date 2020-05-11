@@ -37,11 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
-    <Compile Include="FishStand.cs" />
+    <Compile Include="Stands\FishStand.cs" />
     <Compile Include="Fonty.cs" />
     <Compile Include="LevelLoader.cs" />
     <Compile Include="Ground.cs" />
-    <Compile Include="MarketStands.cs" />
+    <Compile Include="Stands\MarketStand.cs" />
     <Compile Include="MyGame.cs" />
     <Compile Include="GXPEngine\Canvas.cs" />
     <Compile Include="GXPEngine\Game.cs" />
@@ -76,7 +76,8 @@
     <Compile Include="GXPEngine\AddOns\Window.cs" />
     <Compile Include="GXPEngine\AddOns\EasyDraw.cs" />
     <Compile Include="GXPEngine\Core\Collision.cs" />
-    <Compile Include="Vec2.cs" />
+    <Compile Include="GXPEngine\Vec2.cs" />
+    <Compile Include="Stands\VegetableFruitStand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">

@@ -127,7 +127,7 @@ namespace GXPEngine
 
         private void BoothCollision()
         {
-            foreach (MarketStands currentStand in LevelLoader.MarketStandList)
+            foreach (MarketStand currentStand in LevelLoader.VegetableFruitStandList)
             {
                 List<Vec2> vectorsToCorners = new List<Vec2>();
                 vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y - currentStand.height / 2));

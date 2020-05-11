@@ -13,10 +13,9 @@ class LevelLoader : GameObject
     private Map _mapData;
     private short[,] _tileData;
     //Game specific
-    public static List<MarketStands> MarketStandList = new List<MarketStands>();
+    public static List<MarketStand> VegetableFruitStandList = new List<MarketStand>();
     public static List<FishStand> FishStandList = new List<FishStand>();
     public static Character character;
-
 
     public LevelLoader(string mapName)
     {
@@ -56,20 +55,6 @@ class LevelLoader : GameObject
         }
     }
 
-    /*public void BlockRow(byte blockAmount, int blockPositionX, int blockPositionY, bool drawDirection)
-    {
-        _blockListContainer.Add(new List<Block>());
-
-        for (int i = 0; i < blockAmount; i++)
-        {
-            if (drawDirection) _blockListContainer.ElementAt(_amountOfLists).Insert(i, new Block(blockPositionX + i * Block.BlockWidth, blockPositionY));
-            else _blockListContainer.ElementAt(_amountOfLists).Insert(i, new Block((blockPositionX - Block.BlockWidth) - (i * Block.BlockWidth), blockPositionY));
-
-            AddChild(_blockListContainer.ElementAt(_amountOfLists).ElementAt(i));
-        }
-        _amountOfLists++;
-    }*/
-
     //All objects get created
     private void LoadGameObjects(Map _mapData)
     {
@@ -83,9 +68,9 @@ class LevelLoader : GameObject
                 switch (currentTiledObject.Name)
                 {
                     case "MarketStand":
-                        MarketStands stand = new MarketStands(currentTiledObject.X, currentTiledObject.Y);
-                        AddChild(stand);
-                        MarketStandList.Add(stand);
+                        VegetableFruitStand fruitStand = new VegetableFruitStand(currentTiledObject.X, currentTiledObject.Y);
+                        AddChild(fruitStand);
+                        VegetableFruitStandList.Add(fruitStand);
                         break;
 
                     case "FishStand":
