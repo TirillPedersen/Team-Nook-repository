@@ -13,10 +13,7 @@ class LevelLoader : GameObject
     private Map _mapData;
     private short[,] _tileData;
     //Game specific
-    public static List<MarketStand> VegetableFruitStandList = new List<MarketStand>();
-    public static List<FishStand> FishStandList = new List<FishStand>();
-    public static List<CheeseStand> CheeseStandList = new List<CheeseStand>(); 
-    public static List<MeatStand> MeatStandList = new List<MeatStand>();
+    public static List<MarketStand> MarketStandList = new List<MarketStand>();
     public static List<NPC> NPCList = new List<NPC>();
     public static Character character;
 
@@ -73,25 +70,25 @@ class LevelLoader : GameObject
                     case "MarketStand":
                         VegetableFruitStand fruitStand = new VegetableFruitStand(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(fruitStand);
-                        VegetableFruitStandList.Add(fruitStand);
+                        MarketStandList.Add(fruitStand);
                         break;
 
                     case "FishStand":
                         FishStand fishStand = new FishStand(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(fishStand);
-                        FishStandList.Add(fishStand);
+                        MarketStandList.Add(fishStand);
                         break;
 
                     case "CheeseStand":
                         CheeseStand cheeseStand = new CheeseStand(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(cheeseStand);
-                        CheeseStandList.Add(cheeseStand);
+                        MarketStandList.Add(cheeseStand);
                         break;
 
                     case "MeatStand":
                         MeatStand meatStand = new MeatStand(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(meatStand);
-                        MeatStandList.Add(meatStand);
+                        MarketStandList.Add(meatStand);
                         break;
 
                     case "NPC":

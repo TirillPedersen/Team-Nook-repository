@@ -86,6 +86,14 @@ namespace GXPEngine
             if (_velocity.Length() > 1) _animationSpeed = 1 + (Time.time / 70 % 10);
             currentFrame = (int)_animationSpeed;
             rotation = _velocity.GetAngleDegrees();
+            //Vec2 test = Vec2.GetUnitVectorDeg(rotation);
+            //if ((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 360 <= -5) test.RotateDegrees(-10);
+            //else if((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 360 >= 5) test.RotateDegrees(10);
+
+            //if (Math.Abs((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 360) > 180) rotation = 0 - test.GetAngleDegrees();
+            //else rotation = test.GetAngleDegrees();
+
+            //Console.WriteLine((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 360);
         }
 
         private void BoundaryCollision()
@@ -131,7 +139,7 @@ namespace GXPEngine
 
         private void BoothCollision()
         {
-            foreach (MarketStand currentStand in LevelLoader.VegetableFruitStandList)
+            foreach (MarketStand currentStand in LevelLoader.MarketStandList)
             {
                 List<Vec2> vectorsToCorners = new List<Vec2>();
                 vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y - currentStand.height / 2));
