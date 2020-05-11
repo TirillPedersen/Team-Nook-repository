@@ -17,6 +17,7 @@ class LevelLoader : GameObject
     public static List<FishStand> FishStandList = new List<FishStand>();
     public static List<CheeseStand> CheeseStandList = new List<CheeseStand>(); 
     public static List<MeatStand> MeatStandList = new List<MeatStand>();
+    public static List<NPC> NPCList = new List<NPC>();
     public static Character character;
 
     public LevelLoader(string mapName)
@@ -91,6 +92,12 @@ class LevelLoader : GameObject
                         MeatStand meatStand = new MeatStand(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(meatStand);
                         MeatStandList.Add(meatStand);
+                        break;
+
+                    case "NPC":
+                        NPC npc = new NPC(currentTiledObject.X, currentTiledObject.Y);
+                        AddChild(npc);
+                        NPCList.Add(npc);
                         break;
 
                     case "Character":

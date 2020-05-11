@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="NPC bois.cs" />
     <Compile Include="Stands\CheeseStand.cs" />
     <Compile Include="Stands\FishStand.cs" />
     <Compile Include="Fonty.cs" />
