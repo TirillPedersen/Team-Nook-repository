@@ -33,12 +33,13 @@ public class MarketStand : AnimationSprite
 
     void mouseHover()
     {
-        Vec2 hoverDistanceMouseCharacter = new Vec2((_mouseX + LevelLoader.character.CalculateCharacterOffset().x) - LevelLoader.character.Position.x, (_mouseY + LevelLoader.character.CalculateCharacterOffset().y) - LevelLoader.character.Position.y);
+        Vec2 hoverDistanceMouseCharacter = new Vec2(_mouseX - LevelLoader.character.Position.x, _mouseY - LevelLoader.character.Position.y);
 
         if (_mouseX >= x - width / 2
             && _mouseX <= x + width / 2
             && _mouseY >= y - height / 2
-            && _mouseY <= y + height / 2) SetFrame(1);
+            && _mouseY <= y + height / 2
+            && hoverDistanceMouseCharacter.Length() < 450) SetFrame(1);
         else SetFrame(0);
     }
 
