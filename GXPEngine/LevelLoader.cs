@@ -15,6 +15,7 @@ class LevelLoader : GameObject
     //Game specific
     public static List<MarketStand> VegetableFruitStandList = new List<MarketStand>();
     public static List<FishStand> FishStandList = new List<FishStand>();
+    public static List<CheeseStand> CheeseStandList = new List<CheeseStand>(); 
     public static List<MeatStand> MeatStandList = new List<MeatStand>();
     public static Character character;
 
@@ -78,6 +79,12 @@ class LevelLoader : GameObject
                         FishStand fishStand = new FishStand(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(fishStand);
                         FishStandList.Add(fishStand);
+                        break;
+
+                    case "CheeseStand":
+                        CheeseStand cheeseStand = new CheeseStand(currentTiledObject.X, currentTiledObject.Y);
+                        AddChild(cheeseStand);
+                        CheeseStandList.Add(cheeseStand);
                         break;
 
                     case "MeatStand":
