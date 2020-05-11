@@ -96,6 +96,7 @@ namespace GXPEngine
                 float b = _oldPosition.x - Position.x;
                 float POI = a / b;
                 Position = _oldPosition + POI * _velocity;
+                _velocity = new Vec2(0, 0);
             }
             else if (Position.x > game.width - width / 2)
             {
@@ -103,6 +104,7 @@ namespace GXPEngine
                 float b = _oldPosition.x - Position.x;
                 float POI = a / b;
                 Position = _oldPosition + POI * _velocity;
+                _velocity = new Vec2(0, 0);
             }
             else if (Position.y < height / 2)
             {
@@ -110,6 +112,7 @@ namespace GXPEngine
                 float b = _oldPosition.y - Position.y;
                 float POI = a / b;
                 Position = _oldPosition + POI * _velocity;
+                _velocity = new Vec2(0, 0);
             }
             else if (Position.y > game.height - height / 2)
             {
@@ -117,6 +120,7 @@ namespace GXPEngine
                 float b = _oldPosition.y - Position.y;
                 float POI = a / b;
                 Position = _oldPosition + POI * _velocity;
+                _velocity = new Vec2(0, 0);
             }
         }
 
@@ -146,7 +150,6 @@ namespace GXPEngine
                 foreach (Vec2 currentSideVector in sideVectors)
                 {
                     Vec2 differenceVector = Position - vectorsToCorners.ElementAt(currentReferenceCornerVector);
-                    //float distance = differenceVector.Dot(currentSideVector.Normal());
 
                     float a = -differenceVector.Dot(currentSideVector.Normal()) - width / 2;
                     float b = _velocity.Dot(currentSideVector.Normal());
@@ -187,7 +190,7 @@ namespace GXPEngine
             BoundaryCollision();
             BoothCollision();
             EulerIntegration();
-            if (_velocity.Length() > 0.4f) PlayerAnimation(_currentAnimation);
+            if (_velocity.Length() > 1.5f) PlayerAnimation(_currentAnimation);
             else currentFrame = 0;
         }
     }
