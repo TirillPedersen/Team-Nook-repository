@@ -98,9 +98,8 @@ class LevelLoader : GameObject
                         break;
 
                     case "Character":
-                        character = new Character(currentTiledObject.X, currentTiledObject.Y);
+                        character = new Character(currentTiledObject.X, currentTiledObject.Y, _mapData.Width * _mapData.TileWidth, _mapData.Height * _mapData.TileHeight);
                         AddChild(character);
-                        Console.WriteLine("Executed");
                         break;
                 }
             }

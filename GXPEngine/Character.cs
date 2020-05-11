@@ -14,25 +14,25 @@ namespace GXPEngine
         private Vec2 _acceleration;
         private static float _maxSpeed = 5.0f;
         private byte _currentAnimation;
-        private float _animationSpeed, _timePassed;
+        private float _animationSpeed, _timePassed, _mapWidth, _mapHeight;
         public Camera CharacterCamera;
         public Vec2 CharacterOffset;
 
-        public Character(float givenX, float givenY) : base("PlayerSpritesheet.png", 4, 3)
+        public Character(float givenX, float givenY, float mapWidth, float mapHeight) : base("PlayerSpritesheet.png", 4, 3)
         {
             SetOrigin(width / 2, height / 2);
             Position.SetXY(givenX, givenY);
+            SetXY(givenX, givenY);
             CharacterCamera = new Camera(0, 0, game.width, game.height);
             game.AddChild(CharacterCamera);
-            CharacterCamera.SetXY(x, y);
             _velocity = new Vec2(0, 0);
             _acceleration = new Vec2(0, 0);
             _animationSpeed = 0;
             _currentAnimation = 0;
             _timePassed = 0;
             CharacterOffset = Position;
-            CharacterOffset.x += 700;
-            CharacterOffset.y += 150;
+            _mapWidth = mapWidth;
+            _mapHeight = mapHeight;
         }
 
         private void PlayerMovement(byte currentInput)
@@ -107,7 +107,7 @@ namespace GXPEngine
                 Position = _oldPosition + POI * _velocity;
                 _velocity = new Vec2(0, 0);
             }
-            else if (Position.x > game.width - width / 2)
+            else if (Position.x > _mapWidth - width / 2)
             {
                 float a = _oldPosition.x - (game.width - width / 2);
                 float b = _oldPosition.x - Position.x;
@@ -123,7 +123,7 @@ namespace GXPEngine
                 Position = _oldPosition + POI * _velocity;
                 _velocity = new Vec2(0, 0);
             }
-            else if (Position.y > game.height - height / 2)
+            else if (Position.y > _mapHeight - height / 2)
             {
                 float a = _oldPosition.y - (game.height - height / 2);
                 float b = _oldPosition.y - Position.y;
@@ -134,7 +134,7 @@ namespace GXPEngine
         }
 
         public Vec2 CalculateCharacterOffset()
-        {
+        {   
             return new Vec2(Position.x - CharacterOffset.x, Position.y - CharacterOffset.y);
         }
 
@@ -195,12 +195,12 @@ namespace GXPEngine
         {
             AddViscosity();
             PlayerInput();
-            BoundaryCollision();
-            BoothCollision();
-            EulerIntegration();
-            CameraMovement();
             if (_velocity.Length() > 1.5f) PlayerAnimation(_currentAnimation);
             else currentFrame = 0;
+            BoothCollision();
+            //BoundaryCollision();
+            EulerIntegration();
+            CameraMovement();
         }
     }
 }
