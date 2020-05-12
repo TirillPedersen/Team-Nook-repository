@@ -6,7 +6,6 @@ using System.Text;
 using GXPEngine;
 
 //this is the superclass for all stands
-
 public class MarketStand : AnimationSprite
 {
     // variables

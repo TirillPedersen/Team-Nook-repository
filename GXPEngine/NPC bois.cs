@@ -12,5 +12,17 @@ public class NPC : AnimationSprite
         SetOrigin(width / 2, height / 2);
         SetXY(givenX, givenY);
     }
+
+    //void RandomNPC() 
+    //{
+    //    for (int i = 0; i < NPCList.count; i++)
+    //    {
+
+    //    }
+    //    NPCRandomizer = Utils.Random(0, 100);
+
+    //    if 
+    //}
+
 }
 
