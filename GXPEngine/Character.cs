@@ -186,6 +186,7 @@ namespace GXPEngine
         private void CameraMovement()
         {
             CharacterCamera.SetXY(x, y);
+            LevelLoader.hud.SetXY(x - game.width/2, y- game.height/2);
         }
 
         protected void Update()
