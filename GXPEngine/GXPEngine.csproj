@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carousel.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="NPC bois.cs" />
     <Compile Include="Stands\CheeseStand.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="GXPEngine\Vec2.cs" />
     <Compile Include="Stands\MeatStand.cs" />
     <Compile Include="Stands\VegetableFruitStand.cs" />
+    <Compile Include="TableWithBenches.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">

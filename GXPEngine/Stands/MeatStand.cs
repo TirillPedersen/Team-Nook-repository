@@ -7,7 +7,7 @@ namespace GXPEngine
 {
     class MeatStand : MarketStand
     {
-        public MeatStand(float givenX, float givenY, int givenRotation = 0) : base(givenX, givenY, "MeatStand.png", givenRotation)
+        public MeatStand(float givenX, float givenY, float givenRotation = 0) : base(givenX, givenY, "MeatStand.png", givenRotation)
         { 
         }
     }

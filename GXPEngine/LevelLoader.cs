@@ -13,7 +13,7 @@ class LevelLoader : GameObject
     private Map _mapData;
     private short[,] _tileData;
     //Game specific
-    public static List<MarketStand> MarketStandList = new List<MarketStand>();
+    public static List<AnimationSprite> CollisionObjectList = new List<AnimationSprite>();
     public static List<NPC> NPCList = new List<NPC>();
     public static Character Character;
 
@@ -68,38 +68,51 @@ class LevelLoader : GameObject
                 switch (currentTiledObject.Name)
                 {
                     case "FruitStand":
-                        VegetableFruitStand fruitStand = new VegetableFruitStand(currentTiledObject.X, currentTiledObject.Y);
+                        VegetableFruitStand fruitStand = new VegetableFruitStand(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.Rotation);
                         AddChild(fruitStand);
-                        MarketStandList.Add(fruitStand);
+                        CollisionObjectList.Add(fruitStand);
                         break;
 
                     case "FishStand":
-                        FishStand fishStand = new FishStand(currentTiledObject.X, currentTiledObject.Y);
+                        FishStand fishStand = new FishStand(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.Rotation);
                         AddChild(fishStand);
-                        MarketStandList.Add(fishStand);
+                        CollisionObjectList.Add(fishStand);
                         break;
 
                     case "CheeseStand":
-                        CheeseStand cheeseStand = new CheeseStand(currentTiledObject.X, currentTiledObject.Y);
+                        CheeseStand cheeseStand = new CheeseStand(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.Rotation);
                         AddChild(cheeseStand);
-                        MarketStandList.Add(cheeseStand);
+                        CollisionObjectList.Add(cheeseStand);
                         break;
 
                     case "MeatStand":
-                        MeatStand meatStand = new MeatStand(currentTiledObject.X, currentTiledObject.Y);
+                        MeatStand meatStand = new MeatStand(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.Rotation);
                         AddChild(meatStand);
-                        MarketStandList.Add(meatStand);
+                        CollisionObjectList.Add(meatStand);
                         break;
 
                     case "NPC":
                         NPC npc = new NPC(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(npc);
+                        CollisionObjectList.Add(npc);
                         NPCList.Add(npc);
                         break;
 
                     case "Character":
                         Character = new Character(currentTiledObject.X, currentTiledObject.Y, _mapData.Width * _mapData.TileWidth, _mapData.Height * _mapData.TileHeight);
                         AddChild(Character);
+                        break;
+
+                    case "tableWithBenches":
+                        TableWithBenches twb = new TableWithBenches(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.Rotation);
+                        AddChild(twb);
+                        CollisionObjectList.Add(twb);
+                        break;
+
+                    case "Carousel":
+                        Carousel carousel = new Carousel(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.Rotation);
+                        AddChild(carousel);
+                        CollisionObjectList.Add(carousel);
                         break;
                 }
             }

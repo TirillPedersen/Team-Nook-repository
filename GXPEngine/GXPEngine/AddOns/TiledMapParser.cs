@@ -387,14 +387,14 @@ namespace TiledMapParser
 		[XmlAttribute("id")]
 		public int ID;
 		[XmlAttribute("gid")]
-		public int GID=-1;
+		public int GID = -1;
 		[XmlAttribute("name")]
 		public string Name;
 		[XmlAttribute("type")]
 		public string Type;
-		[XmlAttribute("width")]		// width in pixels
+		[XmlAttribute("width")]     // width in pixels
 		public float Width;
-		[XmlAttribute("height")]	// height in pixels
+		[XmlAttribute("height")]    // height in pixels
 		public float Height;
 		[XmlAttribute("x")]
 		public float X;
@@ -402,6 +402,8 @@ namespace TiledMapParser
 		public float Y;
 		[XmlElement("text")]
 		public Text textField;
+		[XmlAttribute("rotation")]
+		public float Rotation;
 
 		override public string ToString() {
 			return "Object: " + Name + " ID: " + ID + " Type: " + Type + " coordinates: (" + X + "," + Y + ") dimensions: (" + Width + "," + Height + ")\n";	

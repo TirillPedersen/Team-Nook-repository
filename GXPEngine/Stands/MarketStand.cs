@@ -14,7 +14,7 @@ public class MarketStand : AnimationSprite
     private float _mouseY;
     public Vec2 _position;
 
-    public MarketStand(float givenX, float givenY, string fileName, int givenRotation = 0, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
+    public MarketStand(float givenX, float givenY, string fileName, float givenRotation = 0, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
     {
         _position = new Vec2(givenX, givenY);
         SetXY(givenX, givenY);

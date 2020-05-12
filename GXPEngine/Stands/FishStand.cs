@@ -7,7 +7,7 @@ using GXPEngine;
 
 public class FishStand : MarketStand
 {
-    public FishStand(float givenX, float givenY, int givenRotation = 0) : base(givenX, givenY, "fishShop.png", givenRotation)
+    public FishStand(float givenX, float givenY, float givenRotation = 0) : base(givenX, givenY, "fishShop.png", givenRotation)
     { 
     }
 }
