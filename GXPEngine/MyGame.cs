@@ -4,17 +4,12 @@ using GXPEngine;								// GXPEngine contains the engine
 
 public class MyGame : Game
 {
-    // Create a window that's 1056, 800 / No fullscreen / No vsync
-
     public MyGame() : base(1920, 1080, false, false)
     {
         //Set FPS to 60 for consistency
         targetFps = 60;
 
         RenderMain = false;
-
-        Ground ground = new Ground(0, 0);
-        AddChild(ground);
 
         //Fonty font = new Fonty(500, 500, 10);
         //AddChild(font);

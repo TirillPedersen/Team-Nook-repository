@@ -13,27 +13,25 @@ public class MarketStand : AnimationSprite
     private float _mouseX;
     private float _mouseY;
     public Vec2 _position;
-    private float initCharacterX, initCharacterY;
 
-    public MarketStand(float givenX, float givenY, string fileName, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
+    public MarketStand(float givenX, float givenY, string fileName, int givenRotation = 0, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
     {
         _position = new Vec2(givenX, givenY);
         SetXY(givenX, givenY);
         SetOrigin(width / 2, height / 2);
-        initCharacterX = LevelLoader.character.Position.x;
-        initCharacterY = LevelLoader.character.Position.y;
+        rotation = givenRotation;
     }
 
 
     private void getMousePos()
     {
-        _mouseX = initCharacterX +((Input.mouseX - game.width / 2) + LevelLoader.character.CalculateCharacterOffset().x);
-        _mouseY = initCharacterY +((Input.mouseY - game.height / 2) + LevelLoader.character.CalculateCharacterOffset().y);
+        _mouseX = LevelLoader.Character.CharacterOffset.x +((Input.mouseX - game.width / 2) + LevelLoader.Character.CalculateCharacterOffset().x);
+        _mouseY = LevelLoader.Character.CharacterOffset.y +((Input.mouseY - game.height / 2) + LevelLoader.Character.CalculateCharacterOffset().y);
     }
 
     void mouseHover()
     {
-        Vec2 hoverDistanceMouseCharacter = new Vec2(_mouseX - LevelLoader.character.Position.x, _mouseY - LevelLoader.character.Position.y);
+        Vec2 hoverDistanceMouseCharacter = new Vec2(_mouseX - LevelLoader.Character.Position.x, _mouseY - LevelLoader.Character.Position.y);
 
         if (_mouseX >= x - width / 2
             && _mouseX <= x + width / 2

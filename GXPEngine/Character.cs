@@ -198,7 +198,7 @@ namespace GXPEngine
             if (_velocity.Length() > 1.5f) PlayerAnimation(_currentAnimation);
             else currentFrame = 0;
             BoothCollision();
-            //BoundaryCollision();
+            BoundaryCollision();
             EulerIntegration();
             CameraMovement();
         }

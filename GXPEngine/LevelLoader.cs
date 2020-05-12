@@ -15,7 +15,7 @@ class LevelLoader : GameObject
     //Game specific
     public static List<MarketStand> MarketStandList = new List<MarketStand>();
     public static List<NPC> NPCList = new List<NPC>();
-    public static Character character;
+    public static Character Character;
 
     public LevelLoader(string mapName)
     {
@@ -67,7 +67,7 @@ class LevelLoader : GameObject
             {
                 switch (currentTiledObject.Name)
                 {
-                    case "MarketStand":
+                    case "FruitStand":
                         VegetableFruitStand fruitStand = new VegetableFruitStand(currentTiledObject.X, currentTiledObject.Y);
                         AddChild(fruitStand);
                         MarketStandList.Add(fruitStand);
@@ -98,8 +98,8 @@ class LevelLoader : GameObject
                         break;
 
                     case "Character":
-                        character = new Character(currentTiledObject.X, currentTiledObject.Y, _mapData.Width * _mapData.TileWidth, _mapData.Height * _mapData.TileHeight);
-                        AddChild(character);
+                        Character = new Character(currentTiledObject.X, currentTiledObject.Y, _mapData.Width * _mapData.TileWidth, _mapData.Height * _mapData.TileHeight);
+                        AddChild(Character);
                         break;
                 }
             }

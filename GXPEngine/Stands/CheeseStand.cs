@@ -7,7 +7,7 @@ using GXPEngine;
 
 public class CheeseStand : MarketStand
 {
-    public CheeseStand(float givenX, float givenY) : base(givenX, givenY, "cheeseStand.png")
+    public CheeseStand(float givenX, float givenY, int givenRotation = 0) : base(givenX, givenY, "cheeseStand.png", givenRotation)
     { 
     }
 }
