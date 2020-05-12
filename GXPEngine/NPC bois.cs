@@ -11,18 +11,38 @@ public class NPC : AnimationSprite
     {
         SetOrigin(width / 2, height / 2);
         SetXY(givenX, givenY);
+        RandomNPC();
+
     }
 
-    //void RandomNPC() 
-    //{
-    //    for (int i = 0; i < NPCList.count; i++)
-    //    {
+    void RandomNPC()
+    {
+        int NPCAmount = 10;
 
-    //    }
-    //    NPCRandomizer = Utils.Random(0, 100);
+        for (int i = 0; i < NPCAmount; i++)
+        {
+            int NPCRandomizer = Utils.Random(1, 4);
 
-    //    if 
-    //}
+            if (NPCRandomizer == 1)
+            {
+                SetFrame(0);
+            }
 
+            if (NPCRandomizer == 2)
+            {
+                SetFrame(1);
+            }
+
+            if (NPCRandomizer == 3)
+            {
+                SetFrame(2);
+            }
+
+            if (NPCRandomizer == 4)
+            {
+                SetFrame(3);
+            }
+        }
+    }
 }
 

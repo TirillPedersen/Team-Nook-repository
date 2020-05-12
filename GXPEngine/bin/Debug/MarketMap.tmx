@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="26">
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="26">
  <tileset firstgid="1" name="Bricks" tilewidth="128" tileheight="128" tilecount="1" columns="1">
   <image source="bricks.png" width="128" height="128"/>
  </tileset>
  <objectgroup id="1" name="Object Layer 1">
   <object id="1" name="Character" x="1024" y="512" width="128" height="128"/>
-  <object id="8" name="FruitStand" x="640" y="128" width="384" height="256"/>
+  <object id="8" name="FruitStand" x="386" y="130" width="384" height="256"/>
   <object id="6" name="FishStand" x="1152" y="768" width="384" height="256"/>
   <object id="11" name="MeatStand" x="1280" y="128" width="384" height="256"/>
   <object id="12" name="CheeseStand" x="1664" y="768" width="384" height="256"/>
   <object id="13" name="NPC" x="1792" y="384" width="128" height="128"/>
   <object id="18" name="CheeseStand" x="640" y="768" width="384" height="256"/>
   <object id="19" name="FishStand" x="1664" y="128" width="384" height="256"/>
-  <object id="21" name="FruitStand" x="128" y="128" width="384" height="256"/>
-  <object id="22" name="NPC" x="520.848" y="499.636" width="128" height="128"/>
+  <object id="21" name="FruitStand" x="126" y="512" width="384" height="256" rotation="270"/>
+  <object id="22" name="NPC" x="388.848" y="567.636" width="128" height="128" rotation="270"/>
   <object id="23" name="NPC" x="384" y="1024" width="128" height="128"/>
   <object id="24" name="tableWithBenches" x="1024" y="1408" width="384" height="256"/>
   <object id="25" name="Carousel" x="347.03" y="1259.88" width="384" height="256"/>
