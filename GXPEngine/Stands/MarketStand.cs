@@ -12,6 +12,7 @@ public class MarketStand : AnimationSprite
     private float _mouseX;
     private float _mouseY;
     public Vec2 _position;
+    public bool ProximityToStand;
 
     public MarketStand(float givenX, float givenY, string fileName, float givenRotation = 0, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
     {
@@ -19,13 +20,14 @@ public class MarketStand : AnimationSprite
         SetXY(givenX, givenY);
         SetOrigin(width / 2, height / 2);
         rotation = givenRotation;
+        ProximityToStand = false;
     }
 
 
     private void getMousePos()
     {
-        _mouseX = LevelLoader.Character.CharacterOffset.x +((Input.mouseX - game.width / 2) + LevelLoader.Character.CalculateCharacterOffset().x);
-        _mouseY = LevelLoader.Character.CharacterOffset.y +((Input.mouseY - game.height / 2) + LevelLoader.Character.CalculateCharacterOffset().y);
+        _mouseX = LevelLoader.Character.CharacterOffset.x + ((Input.mouseX - game.width / 2) + LevelLoader.Character.CalculateCharacterOffset().x);
+        _mouseY = LevelLoader.Character.CharacterOffset.y + ((Input.mouseY - game.height / 2) + LevelLoader.Character.CalculateCharacterOffset().y);
     }
 
     void mouseHover()
@@ -36,8 +38,25 @@ public class MarketStand : AnimationSprite
             && _mouseX <= x + width / 2
             && _mouseY >= y - height / 2
             && _mouseY <= y + height / 2
-            && hoverDistanceMouseCharacter.Length() < 450) SetFrame(1);
-        else SetFrame(0);
+            && hoverDistanceMouseCharacter.Length() > 450)
+        {
+            SetFrame(0);
+            ProximityToStand = true;
+        }
+        else if (_mouseX >= x - width / 2
+            && _mouseX <= x + width / 2
+            && _mouseY >= y - height / 2
+            && _mouseY <= y + height / 2
+            && hoverDistanceMouseCharacter.Length() < 450)
+        {
+            SetFrame(1);
+            ProximityToStand = false;
+        }
+        else
+        {
+            SetFrame(0);
+            ProximityToStand = false;
+        }
     }
 
     protected void Update()

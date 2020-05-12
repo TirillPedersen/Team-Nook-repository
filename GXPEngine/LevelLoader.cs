@@ -16,6 +16,7 @@ class LevelLoader : GameObject
     public static List<AnimationSprite> CollisionObjectList = new List<AnimationSprite>();
     public static List<NPC> NPCList = new List<NPC>();
     public static Character Character;
+    public static HUD hud = new HUD();
 
     public LevelLoader(string mapName)
     {
@@ -26,6 +27,8 @@ class LevelLoader : GameObject
         //Calls both methods to create tiles and objects
         this.LoadLevel(_mapData);
         this.LoadGameObjects(_mapData);
+
+        AddChild(hud);
     }
 
     //All the tiles get created
