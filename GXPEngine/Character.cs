@@ -89,13 +89,18 @@ namespace GXPEngine
             currentFrame = (int)_animationSpeed;
 
             //Rotation
-            Vec2 rotationVector = Vec2.GetUnitVectorDeg(rotation);
-            if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) < -5) rotationVector.RotateDegrees(-10);
-            else if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) > 5) rotationVector.RotateDegrees(10);
+            float tempDeltaAngle = _velocity.GetAngleDegrees() - (rotation % 361);
+            float temp = 0;
 
-            if (Math.Abs((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) % 360) > 180) rotation = 0 - rotationVector.GetAngleDegrees();
-            else rotation = rotationVector.GetAngleDegrees();
-            Console.WriteLine(rotation);
+            if (tempDeltaAngle < -2 || tempDeltaAngle > 2)
+            {
+                if (tempDeltaAngle < -2) temp = -5;
+                else if (tempDeltaAngle > 2) temp = 5;
+
+                if (Math.Abs(tempDeltaAngle % 360) > 180) temp = 0 - temp;
+
+                rotation += temp;
+            }
         }
 
         private void BoundaryCollision()
