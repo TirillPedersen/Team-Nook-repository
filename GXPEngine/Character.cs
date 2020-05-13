@@ -33,6 +33,7 @@ namespace GXPEngine
             CharacterOffset = Position;
             _mapWidth = mapWidth;
             _mapHeight = mapHeight;
+            rotation = 90;
         }
 
         private void PlayerMovement(byte currentInput)
@@ -87,14 +88,21 @@ namespace GXPEngine
             _timePassed += Time.deltaTime;
             if (_velocity.Length() > 1) _animationSpeed = 1 + (Time.time / 70 % 10);
             currentFrame = (int)_animationSpeed;
-            
-            //Rotation
-            Vec2 rotationVector = Vec2.GetUnitVectorDeg(rotation);
-            if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) <= -5) rotationVector.RotateDegrees(-10);
-            else if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) >= 5) rotationVector.RotateDegrees(10);
 
-            if (Math.Abs((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) % 361) > 180) rotation = 0 - rotationVector.GetAngleDegrees();
-            else rotation = rotationVector.GetAngleDegrees();
+            //Rotation
+            float tempDeltaAngle = 0;
+            tempDeltaAngle = _velocity.GetAngleDegrees() - (rotation % 361);
+            float temp = 0;
+
+            if (tempDeltaAngle < -5 || tempDeltaAngle >= 5)
+            {
+                if (tempDeltaAngle < 0) temp = -5;
+                else temp = 5;
+
+                if (Math.Abs(tempDeltaAngle % 361) > 180) temp = 0 - temp;
+
+                rotation += temp;
+            }
         }
 
         private void BoundaryCollision()
@@ -189,7 +197,7 @@ namespace GXPEngine
         private void CameraMovement()
         {
             CharacterCamera.SetXY(x, y);
-            LevelLoader.hud.SetXY(x - game.width/2, y- game.height/2);
+            LevelLoader.hud.SetXY(x - game.width / 2, y - game.height / 2);
         }
 
         protected void Update()
