@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using TiledMapParser;
@@ -21,6 +22,9 @@ namespace GXPEngine
         private bool _textOnceAdded;
         private Sprite _shoppingList;
         private Sprite _logo;
+
+        //Font
+        PrivateFontCollection pfc;
 
         public HUD()
         {
@@ -80,11 +84,17 @@ namespace GXPEngine
             _rectNews.color = 0x262626;
             AddChild(_rectNews);
 
+            //News text
             _newsText = new EasyDraw(1920, 1080, addCollider: false);
             _newsText.color = 0x56b25d;
             _newsText.TextSize(40);
             _newsText.Text("Important news will be displayed here!", 215, 120);
             AddChild(_newsText);
+
+            //Load font
+            pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("‪C:\\Users\\Mauri\\Desktop\\Team-Nook-repository\\GXPEngine\bin\\Debug\\kenyan_coffee_rg.ttf");
+
         }
 
         public void ShowProximityInfo()

@@ -94,21 +94,15 @@ namespace GXPEngine
             tempDeltaAngle = _velocity.GetAngleDegrees() - (rotation % 361);
             float temp = 0;
 
-            if (tempDeltaAngle < -4 || tempDeltaAngle > 4)
+            if (tempDeltaAngle < -5 || tempDeltaAngle >= 5)
             {
-                if (tempDeltaAngle < 4 && tempDeltaAngle > -4)
-                {
-                    temp = 0;
-                    tempDeltaAngle = 0;
-                }
-                else if (tempDeltaAngle < -4) temp = -4;
-                else temp = 4;
+                if (tempDeltaAngle < 0) temp = -5;
+                else temp = 5;
 
-                if (Math.Abs(tempDeltaAngle % 360) > 180) temp = 0 - temp;
+                if (Math.Abs(tempDeltaAngle % 361) > 180) temp = 0 - temp;
 
                 rotation += temp;
             }
-            Console.WriteLine(tempDeltaAngle);
         }
 
         private void BoundaryCollision()
