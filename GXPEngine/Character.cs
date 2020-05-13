@@ -90,11 +90,12 @@ namespace GXPEngine
 
             //Rotation
             Vec2 rotationVector = Vec2.GetUnitVectorDeg(rotation);
-            if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) <= -5) rotationVector.RotateDegrees(-10);
-            else if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) >= 5) rotationVector.RotateDegrees(10);
+            if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) < -5) rotationVector.RotateDegrees(-10);
+            else if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) > 5) rotationVector.RotateDegrees(10);
 
-            if (Math.Abs((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) % 361) > 180) rotation = 0 - rotationVector.GetAngleDegrees();
+            if (Math.Abs((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) % 360) > 180) rotation = 0 - rotationVector.GetAngleDegrees();
             else rotation = rotationVector.GetAngleDegrees();
+            Console.WriteLine(rotation);
         }
 
         private void BoundaryCollision()
