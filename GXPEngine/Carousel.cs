@@ -7,21 +7,28 @@ namespace GXPEngine
 {
     class Carousel : AnimationSprite
     {
-        private byte _currentFrame;
+        private byte _currentlyUsedFrame, _frameCounter;
 
         public Carousel(float givenX, float givenY, float givenRotation) : base("Carousel.png", 6, 3)
         {
             SetXY(givenX, givenY);
             SetOrigin(width / 2, height / 2);
             rotation = givenRotation;
-            _currentFrame = 0;
+            _currentlyUsedFrame = 0;
+            _frameCounter = 0;
         }
 
         protected void Update()
         {
-            if (_currentFrame >= 18) _currentFrame = 0;
-            currentFrame = _currentFrame;
-            _currentFrame++;
+            if (_currentlyUsedFrame >= 18) _currentlyUsedFrame = 0;
+            currentFrame = _currentlyUsedFrame;
+
+            if (_frameCounter == 1)
+            {
+                _currentlyUsedFrame++;
+                _frameCounter = 0;
+            }
+            else _frameCounter++;
         }
     }
 }

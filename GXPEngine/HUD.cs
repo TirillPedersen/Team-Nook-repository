@@ -13,7 +13,6 @@ namespace GXPEngine
         private EasyDraw _clock;
         private bool _proximityGiven;
         private bool _textOnceAdded;
-        private Sprite map;
         private Sprite basket;
 
         public HUD()
@@ -22,20 +21,16 @@ namespace GXPEngine
             _proximityInfo = new EasyDraw(1920, 1080, addCollider: false);
             _proximityInfo.SetColor(0, 0, 0);
             _proximityInfo.TextSize(24);
-            _proximityInfo.TextFont("Bahnschrift", 24);
+            _proximityInfo.TextFont("C:\\Users\\Mauri\\Desktop\\Team-Nook-repository\\GXPEngine\\bin\\Debug\\kenyan_coffee_rg.ttf", 24);
 
             _textOnceAdded = false;
 
+            //Clock
             _clock = new EasyDraw(1920, 1080, addCollider: false);
             _clock.SetColor(0, 0, 0);
             _clock.TextSize(40);
-            _clock.TextFont("Bahnschrift", 40);
+            _clock.TextFont("C:\\Users\\Mauri\\Desktop\\Team - Nook - repository\\GXPEngine\\bin\\Debug\\kenyan_coffee_rg.ttf", 40);
             AddChild(_clock);
-
-            map = new Sprite("square.png");
-            map.SetXY(game.width - map.width - 50, 800);
-            map.SetOrigin(map.width / 2, map.height / 2);
-            AddChild(map);
 
             basket = new Sprite("List.png");
             basket.scale = 0.65f;
@@ -75,13 +70,12 @@ namespace GXPEngine
 
         private void drawClock()
         {
-            _clock.Text(DateTime.Now.ToShortTimeString(), game.width - 150, 125);
+            _clock.Text(DateTime.Now.ToShortTimeString(), game.width - 160, 125);
         }
 
         private void MenuHover()
         {
-            if (Input.mouseX >= map.x - map.width / 2 && Input.mouseX <= map.x + map.width / 2 && Input.mouseY >= map.y - map.height / 2 && Input.mouseY <= map.y + map.height / 2) Console.WriteLine("Hovering over map");
-            else if (Input.mouseX >= basket.x - basket.width / 2 && Input.mouseX <= basket.x + basket.width / 2 && Input.mouseY >= basket.y - basket.height / 2 && Input.mouseY <= basket.y + basket.height / 2) Console.WriteLine("Hovering over basket");
+            if (Input.mouseX >= basket.x - basket.width / 2 && Input.mouseX <= basket.x + basket.width / 2 && Input.mouseY >= basket.y - basket.height / 2 && Input.mouseY <= basket.y + basket.height / 2) Console.WriteLine("Hovering over basket");
         }
 
         protected void Update()
