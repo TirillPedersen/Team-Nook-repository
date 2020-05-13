@@ -33,6 +33,7 @@ namespace GXPEngine
             CharacterOffset = Position;
             _mapWidth = mapWidth;
             _mapHeight = mapHeight;
+            rotation = 90;
         }
 
         private void PlayerMovement(byte currentInput)
@@ -89,18 +90,25 @@ namespace GXPEngine
             currentFrame = (int)_animationSpeed;
 
             //Rotation
-            float tempDeltaAngle = _velocity.GetAngleDegrees() - (rotation % 361);
+            float tempDeltaAngle = 0;
+            tempDeltaAngle = _velocity.GetAngleDegrees() - (rotation % 361);
             float temp = 0;
 
-            if (tempDeltaAngle < -2 || tempDeltaAngle > 2)
+            if (tempDeltaAngle < -4 || tempDeltaAngle > 4)
             {
-                if (tempDeltaAngle < -2) temp = -5;
-                else if (tempDeltaAngle > 2) temp = 5;
+                if (tempDeltaAngle < 4 && tempDeltaAngle > -4)
+                {
+                    temp = 0;
+                    tempDeltaAngle = 0;
+                }
+                else if (tempDeltaAngle < -4) temp = -4;
+                else temp = 4;
 
                 if (Math.Abs(tempDeltaAngle % 360) > 180) temp = 0 - temp;
 
                 rotation += temp;
             }
+            Console.WriteLine(tempDeltaAngle);
         }
 
         private void BoundaryCollision()
