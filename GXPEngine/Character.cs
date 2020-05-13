@@ -87,10 +87,10 @@ namespace GXPEngine
             if (_velocity.Length() > 1) _animationSpeed = 1 + (Time.time / 70 % 10);
             currentFrame = (int)_animationSpeed;
             Vec2 test = Vec2.GetUnitVectorDeg(rotation);
-            if ((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 360 <= -5) test.RotateDegrees(-10);
-            else if ((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 360 >= 5) test.RotateDegrees(10);
+            if ((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 361 <= -5) test.RotateDegrees(-10);
+            else if ((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 361 >= 5) test.RotateDegrees(10);
 
-            if (Math.Abs((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 360) > 180) rotation = 0 - test.GetAngleDegrees();
+            if (Math.Abs((_velocity.GetAngleDegrees() - test.GetAngleDegrees()) % 361) > 180) rotation = 0 - test.GetAngleDegrees();
             else rotation = test.GetAngleDegrees();
         }
 
@@ -106,7 +106,7 @@ namespace GXPEngine
             }
             else if (Position.x > _mapWidth - width / 2)
             {
-                float a = _oldPosition.x - (game.width - width / 2);
+                float a = _oldPosition.x - (_mapWidth - width / 2);
                 float b = _oldPosition.x - Position.x;
                 float POI = a / b;
                 Position = _oldPosition + POI * _velocity;
@@ -122,7 +122,7 @@ namespace GXPEngine
             }
             else if (Position.y > _mapHeight - height / 2)
             {
-                float a = _oldPosition.y - (game.height - height / 2);
+                float a = _oldPosition.y - (_mapHeight - height / 2);
                 float b = _oldPosition.y - Position.y;
                 float POI = a / b;
                 Position = _oldPosition + POI * _velocity;
