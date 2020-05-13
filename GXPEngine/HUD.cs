@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GXPEngine.Core;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace GXPEngine
     {
         private EasyDraw _proximityInfo;
         private EasyDraw _clock;
+        private EasyDraw _rectClock;
+        private EasyDraw _rectProximityInfo;
         private bool _proximityGiven;
         private bool _textOnceAdded;
         private Sprite basket;
@@ -18,19 +21,31 @@ namespace GXPEngine
         public HUD()
         {
             //Proximity information
+            _rectProximityInfo = new EasyDraw(1920, 1080, addCollider: false);
+            _rectProximityInfo.alpha = 0.9f;
+            _rectProximityInfo.color = 0x333333;
+            AddChild(_rectProximityInfo);
+
             _proximityInfo = new EasyDraw(1920, 1080, addCollider: false);
-            _proximityInfo.SetColor(0, 0, 0);
+            _proximityInfo.color = 0x45884A;
             _proximityInfo.TextSize(24);
             _proximityInfo.TextFont("C:\\Users\\Mauri\\Desktop\\Team-Nook-repository\\GXPEngine\\bin\\Debug\\kenyan_coffee_rg.ttf", 24);
 
             _textOnceAdded = false;
 
+            _rectClock = new EasyDraw(1920, 1080, addCollider: false);
+            _rectClock.Rect(game.width - 85, 90, 150, 100);
+            _rectClock.alpha = 0.9f;
+            _rectClock.color = 0x333333;
+            AddChild(_rectClock);
+
             //Clock
             _clock = new EasyDraw(1920, 1080, addCollider: false);
-            _clock.SetColor(0, 0, 0);
+            _clock.color = 0x45884A;
             _clock.TextSize(40);
             _clock.TextFont("C:\\Users\\Mauri\\Desktop\\Team - Nook - repository\\GXPEngine\\bin\\Debug\\kenyan_coffee_rg.ttf", 40);
             AddChild(_clock);
+
 
             basket = new Sprite("List.png");
             basket.scale = 0.65f;
@@ -43,6 +58,7 @@ namespace GXPEngine
         {
             _proximityGiven = false;
             _proximityInfo.Text("Walk towards the stand to interact!", Input.mouseX - 250, Input.mouseY);
+            _rectProximityInfo.Rect(Input.mouseX, Input.mouseY - 20, 550, 50);
 
             foreach (AnimationSprite currentStand in LevelLoader.CollisionObjectList)
             {
@@ -58,12 +74,14 @@ namespace GXPEngine
 
             if (_proximityGiven && !_textOnceAdded)
             {
+                AddChild(_rectProximityInfo);
                 AddChild(_proximityInfo);
                 _textOnceAdded = true;
             }
             else if (!_proximityGiven)
             {
                 RemoveChild(_proximityInfo);
+                RemoveChild(_rectProximityInfo);
                 _textOnceAdded = false;
             }
         }
@@ -80,6 +98,7 @@ namespace GXPEngine
 
         protected void Update()
         {
+            _rectProximityInfo.Clear(Color.Transparent);
             _proximityInfo.Clear(Color.Transparent);
             _clock.Clear(Color.Transparent);
             ShowProximityInfo();

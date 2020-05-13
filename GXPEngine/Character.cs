@@ -87,7 +87,7 @@ namespace GXPEngine
             _timePassed += Time.deltaTime;
             if (_velocity.Length() > 1) _animationSpeed = 1 + (Time.time / 70 % 10);
             currentFrame = (int)_animationSpeed;
-            
+
             //Rotation
             Vec2 rotationVector = Vec2.GetUnitVectorDeg(rotation);
             if ((_velocity.GetAngleDegrees() - rotationVector.GetAngleDegrees()) <= -5) rotationVector.RotateDegrees(-10);
@@ -189,7 +189,7 @@ namespace GXPEngine
         private void CameraMovement()
         {
             CharacterCamera.SetXY(x, y);
-            LevelLoader.hud.SetXY(x - game.width/2, y- game.height/2);
+            LevelLoader.hud.SetXY(x - game.width / 2, y - game.height / 2);
         }
 
         protected void Update()
