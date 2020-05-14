@@ -7,7 +7,7 @@ using GXPEngine;
 public class Pigeon : AnimationSprite
 {
     private short _currentlyUsedFrame, _frameCounter;
-    float speed = 11.1f;
+    float speed = 15.0f;
     private bool AllowPigeonsToSpawn;
     private Vec2 PigToPlayer;
 
@@ -27,7 +27,7 @@ public class Pigeon : AnimationSprite
             AllowPigeonsToSpawn = false;
             PigToPlayer = new Vec2(x - LevelLoader.Character.Position.x, y - LevelLoader.Character.Position.y);
             PigToPlayer.Normalize();
-            PigToPlayer = PigToPlayer * 15;
+            PigToPlayer = PigToPlayer * speed;
         }
 
         if (DistanceToPigeons.Length() > 1000 && !AllowPigeonsToSpawn) LateDestroy();
