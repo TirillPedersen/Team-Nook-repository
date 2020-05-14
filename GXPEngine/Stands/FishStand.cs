@@ -12,7 +12,7 @@ public class FishStand : MarketStand
 
     public FishStand(float givenX, float givenY, float givenRotation) : base(givenX, givenY, "fishShop.png", givenRotation)
     {
-        _buyMenu = new Sprite("fishStandBuyScreen.png");
+        _buyMenu = new Sprite("buyScreen.png");
         _buyMenu.SetOrigin(_buyMenu.width / 2, _buyMenu.height / 2);
         _buyMenu.SetXY(game.width - _buyMenu.width, game.height - _buyMenu.height);
         scale = 0.85f;

@@ -1,6 +1,7 @@
 ﻿using GXPEngine.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -13,23 +14,25 @@ namespace GXPEngine
     {
         private EasyDraw _proximityInfo;
         private EasyDraw _clock;
-        private EasyDraw _newsText;
-        private EasyDraw _rectClock;
         private EasyDraw _rectProximityInfo;
-        private EasyDraw _rectLogo;
-        private EasyDraw _rectNews;
         private bool _proximityGiven;
         private bool _textOnceAdded;
         private Sprite _shoppingList;
-        private Sprite _logo;
-        
-        //private Font _ownFont = new Font("‪C:\\Users\\Mauri\\Desktop\\Team-Nook-repository\\GXPEngine\bin\\Debug\\kenyan_coffee_rg.ttf", 1);
-
-        //Font
-        PrivateFontCollection pfc;
+        private Sprite _clockBackground;
+        private Sprite _settingsButton;
+        private Sprite _chatBox;
+        PrivateFontCollection PFC;
+        private Font _ownFontClock;
+        private Font _ownFontText;
 
         public HUD()
         {
+            //Font
+            PFC = new PrivateFontCollection();
+            PFC.AddFontFile(@"kenyan_coffee_rg.ttf");
+            _ownFontClock = new Font(PFC.Families[0], 32);
+            _ownFontText = new Font(PFC.Families[0], 32);
+
             //Proximity information
             _rectProximityInfo = new EasyDraw(1920, 1080, addCollider: false);
             _rectProximityInfo.alpha = 0.9f;
@@ -38,72 +41,45 @@ namespace GXPEngine
 
             _proximityInfo = new EasyDraw(1920, 1080, addCollider: false);
             _proximityInfo.color = 0x56b25d;
-            _proximityInfo.TextSize(24);
-            _proximityInfo.TextFont("C:\\Users\\Mauri\\Desktop\\Team-Nook-repository\\GXPEngine\\bin\\Debug\\kenyan_coffee_rg.ttf", 24);
+            _proximityInfo.TextFont(_ownFontText);
 
             _textOnceAdded = false;
 
-            _rectClock = new EasyDraw(1920, 1080, addCollider: false);
-            _rectClock.Rect(game.width - 90, 85, 150, 100);
-            _rectClock.alpha = 0.9f;
-            _rectClock.color = 0x262626;
-            AddChild(_rectClock);
+            //Clock Background
+            _clockBackground = new Sprite("timeBackground.png");
+            _clockBackground.SetXY(5, 15);
+            AddChild(_clockBackground);
 
             //Clock
             _clock = new EasyDraw(1920, 1080, addCollider: false);
             _clock.color = 0x56b25d;
-            _clock.TextSize(40);
-            _clock.TextFont("C:\\Users\\Mauri\\Desktop\\Team - Nook - repository\\GXPEngine\\bin\\Debug\\kenyan_coffee_rg.ttf", 40);
+            _clock.TextFont(_ownFontClock);
             AddChild(_clock);
 
             //Shopping list
             _shoppingList = new Sprite("List.png");
             _shoppingList.scale = 0.65f;
-            _shoppingList.SetXY(game.width - _shoppingList.width + 60, 225);
+            _shoppingList.SetXY(_shoppingList.width / 2.5f, 300);
             _shoppingList.SetOrigin(_shoppingList.width / 2, _shoppingList.height / 2);
             AddChild(_shoppingList);
 
+            //Settings button
+            _settingsButton = new Sprite("settingsButton.png");
+            _settingsButton.SetXY(225, 13);
+            AddChild(_settingsButton);
 
-            //Rect for logo
-            _rectLogo = new EasyDraw(1920, 1080, addCollider: false);
-            _rectLogo.Rect(95, 85, 150, 100);
-            _rectLogo.SetOrigin(0, 0);
-            _rectLogo.alpha = 0.9f;
-            _rectLogo.color = 0x262626;
-            AddChild(_rectLogo);
-    
-            //Logo
-            _logo = new Sprite("Logo.png");
-            _logo.scale = 0.15f;
-            _logo.SetXY(_logo.width - 50, _logo.height - 50);
-            AddChild(_logo);
-
-            //Rect for news
-            _rectNews = new EasyDraw(1920, 1080, addCollider: false);
-            _rectNews.Rect(920, 85, 1475, 100);
-            _rectNews.SetOrigin(0, 0);
-            _rectNews.alpha = 0.9f;
-            _rectNews.color = 0x262626;
-            AddChild(_rectNews);
-
-            //News text
-            _newsText = new EasyDraw(1920, 1080, addCollider: false);
-            _newsText.color = 0x56b25d;
-            _newsText.TextSize(40);
-            _newsText.Text("Important news will be displayed here!", 215, 120);
-            AddChild(_newsText);
-
-            //Load font
-            pfc = new PrivateFontCollection();
-            //pfc.AddFontFile("‪C:\\Users\\Mauri\\Desktop\\Team-Nook-repository\\GXPEngine\bin\\Debug\\kenyan_coffee_rg.ttf");
-
+            //Chatbox
+            _chatBox = new Sprite("chatBox.png");
+            _chatBox.SetOrigin(_chatBox.width / 2, _chatBox.height / 2);
+            _chatBox.SetXY(game.width/2, game.height - 50);
+            AddChild(_chatBox);
         }
 
         public void ShowProximityInfo()
         {
             _proximityGiven = false;
             _proximityInfo.Text("Walk towards the stand to interact!", Input.mouseX - 250, Input.mouseY);
-            _rectProximityInfo.Rect(Input.mouseX, Input.mouseY - 20, 550, 50);
+            _rectProximityInfo.Rect(Input.mouseX - 15, Input.mouseY - 30, 475, 50);
 
             foreach (AnimationSprite currentStand in LevelLoader.CollisionObjectList)
             {
@@ -133,12 +109,13 @@ namespace GXPEngine
 
         private void drawClock()
         {
-            _clock.Text(DateTime.Now.ToShortTimeString(), game.width - 165, 125);
+            _clock.Text(DateTime.Now.ToShortTimeString(), 75, 87);
         }
 
-        private void MenuHover()
+        public static bool MenuHover(Sprite UIElement)
         {
-            if (Input.mouseX >= _shoppingList.x - _shoppingList.width / 2 && Input.mouseX <= _shoppingList.x + _shoppingList.width / 2 && Input.mouseY >= _shoppingList.y - _shoppingList.height / 2 && Input.mouseY <= _shoppingList.y + _shoppingList.height / 2) Console.WriteLine("Hovering over basket");
+            if (Input.mouseX >= UIElement.x && Input.mouseX <= UIElement.x + UIElement.width && Input.mouseY >= UIElement.y && Input.mouseY <= UIElement.y + UIElement.height) return true;
+            else return false;
         }
 
         protected void Update()
@@ -148,7 +125,6 @@ namespace GXPEngine
             _clock.Clear(Color.Transparent);
             ShowProximityInfo();
             drawClock();
-            MenuHover();
         }
     }
 }

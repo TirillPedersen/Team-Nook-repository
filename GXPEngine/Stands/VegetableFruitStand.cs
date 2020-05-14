@@ -12,7 +12,7 @@ namespace GXPEngine
 
         public VegetableFruitStand(float givenX, float givenY, float givenRotation) : base(givenX, givenY, "VegetableFruitsStand.png", givenRotation)
         {
-            _buyMenu = new Sprite("vegetableBuyScreen.png");
+            _buyMenu = new Sprite("buyScreen.png");
             _buyMenu.SetOrigin(_buyMenu.width / 2, _buyMenu.height / 2);
             _buyMenu.SetXY(game.width - _buyMenu.width, game.height - _buyMenu.height);
             _menuShown = false;
