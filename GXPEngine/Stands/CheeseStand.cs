@@ -7,7 +7,36 @@ using GXPEngine;
 
 public class CheeseStand : MarketStand
 {
+    private Sprite _buyMenu;
+    private bool _menuShown;
+
     public CheeseStand(float givenX, float givenY, float givenRotation = 0) : base(givenX, givenY, "cheeseStand.png", givenRotation)
-    { 
+    {
+        _buyMenu = new Sprite("cheeseStandBuyScreen.png");
+        _buyMenu.SetOrigin(_buyMenu.width / 2, _buyMenu.height / 2);
+        _buyMenu.SetXY(game.width - _buyMenu.width , game.height - _buyMenu.height);
+
+        _menuShown = false;
+    }
+
+    private void BuyMenu()
+    {
+        if (hoveringOverStand && Input.GetMouseButtonDown(0) && !_menuShown)
+        {
+            LevelLoader.hud.AddChild(_buyMenu);
+            _menuShown = true;
+        }
+        else if(hoveringOverStand && _menuShown && Input.GetMouseButtonDown(0))
+        {
+            LevelLoader.hud.RemoveChild(_buyMenu);
+            _menuShown = false;
+        }
+    }
+
+    protected void Update()
+    {
+        getMousePos();
+        mouseHover();
+        BuyMenu();
     }
 }

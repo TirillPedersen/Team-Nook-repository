@@ -22,6 +22,8 @@ namespace GXPEngine
         private bool _textOnceAdded;
         private Sprite _shoppingList;
         private Sprite _logo;
+        
+        //private Font _ownFont = new Font("‪C:\\Users\\Mauri\\Desktop\\Team-Nook-repository\\GXPEngine\bin\\Debug\\kenyan_coffee_rg.ttf", 1);
 
         //Font
         PrivateFontCollection pfc;
