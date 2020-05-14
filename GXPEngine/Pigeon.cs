@@ -8,7 +8,7 @@ public class Pigeon : AnimationSprite
 {
     public Pigeon() : base("pigeon.png", 2, 3)
     {
-        SetXY(500,500);
+        ////SetXY(500,500);
     }
 }
 

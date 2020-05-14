@@ -58,6 +58,11 @@ class LevelLoader : GameObject
                         GarbageCan garbageCan= new GarbageCan(column * _tileWidth, row * _tileHeight);
                         AddChild(garbageCan);
                         break;
+
+                    case 3:
+                        DirtyTile dirtyTile = new DirtyTile(column * _tileWidth, row * _tileHeight);
+                        AddChild(dirtyTile);
+                        break;
                 }
             }
         }
