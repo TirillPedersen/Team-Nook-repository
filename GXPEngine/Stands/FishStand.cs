@@ -10,7 +10,7 @@ public class FishStand : MarketStand
     private Sprite _buyMenu;
     private bool _menuShown;
 
-    public FishStand(float givenX, float givenY, float givenRotation = 0) : base(givenX, givenY, "fishShop.png", givenRotation)
+    public FishStand(float givenX, float givenY, float givenRotation) : base(givenX, givenY, "fishShop.png", givenRotation)
     {
         _buyMenu = new Sprite("fishStandBuyScreen.png");
         _buyMenu.SetOrigin(_buyMenu.width / 2, _buyMenu.height / 2);

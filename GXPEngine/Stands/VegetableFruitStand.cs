@@ -10,7 +10,7 @@ namespace GXPEngine
         private Sprite _buyMenu;
         private bool _menuShown;
 
-        public VegetableFruitStand(float givenX, float givenY, float givenRotation = 0) : base(givenX, givenY, "VegetableFruitsStand.png", givenRotation)
+        public VegetableFruitStand(float givenX, float givenY, float givenRotation) : base(givenX, givenY, "VegetableFruitsStand.png", givenRotation)
         {
             _buyMenu = new Sprite("vegetableBuyScreen.png");
             _buyMenu.SetOrigin(_buyMenu.width / 2, _buyMenu.height / 2);

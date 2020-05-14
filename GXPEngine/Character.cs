@@ -154,10 +154,21 @@ namespace GXPEngine
             foreach (AnimationSprite currentStand in LevelLoader.CollisionObjectList)
             {
                 List<Vec2> vectorsToCorners = new List<Vec2>();
-                vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y - currentStand.height / 2));
-                vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.width / 2, currentStand.y - currentStand.height / 2));
-                vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.width / 2, currentStand.y + currentStand.height / 2));
-                vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y + currentStand.height / 2));
+
+                if(currentStand.rotation == 0 || currentStand.rotation == 180)
+                {
+                    vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y - currentStand.height / 2));
+                    vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.width / 2, currentStand.y - currentStand.height / 2));
+                    vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.width / 2, currentStand.y + currentStand.height / 2));
+                    vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.width / 2, currentStand.y + currentStand.height / 2));
+                }
+                else
+                {
+                    vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.height / 2, currentStand.y - currentStand.width / 2));
+                    vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.height / 2, currentStand.y - currentStand.width / 2));
+                    vectorsToCorners.Add(new Vec2(currentStand.x + currentStand.height / 2, currentStand.y + currentStand.width / 2));
+                    vectorsToCorners.Add(new Vec2(currentStand.x - currentStand.height / 2, currentStand.y + currentStand.width / 2));
+                }
 
                 List<Vec2> sideVectors = new List<Vec2>();
                 sideVectors.Add(vectorsToCorners.ElementAt(1) - vectorsToCorners.ElementAt(0));
