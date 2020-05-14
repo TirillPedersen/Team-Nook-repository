@@ -14,6 +14,7 @@ public class MarketStand : AnimationSprite
     public Vec2 _position;
     public bool ProximityToStand;
     protected bool hoveringOverStand;
+    public static bool MenuCurrentlyOpened = false;
 
     public MarketStand(float givenX, float givenY, string fileName, float givenRotation = 0, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
     {

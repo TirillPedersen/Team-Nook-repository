@@ -15,21 +15,23 @@ public class CheeseStand : MarketStand
         _buyMenu = new Sprite("cheeseStandBuyScreen.png");
         _buyMenu.SetOrigin(_buyMenu.width / 2, _buyMenu.height / 2);
         _buyMenu.SetXY(game.width - _buyMenu.width , game.height - _buyMenu.height);
-
         _menuShown = false;
+        scale = 0.85f;
     }
 
     private void BuyMenu()
     {
-        if (hoveringOverStand && Input.GetMouseButtonDown(0) && !_menuShown)
+        if (hoveringOverStand && Input.GetMouseButtonDown(0) && !_menuShown && !MarketStand.MenuCurrentlyOpened)
         {
             LevelLoader.hud.AddChild(_buyMenu);
             _menuShown = true;
+            MarketStand.MenuCurrentlyOpened = true;
         }
         else if(hoveringOverStand && _menuShown && Input.GetMouseButtonDown(0))
         {
             LevelLoader.hud.RemoveChild(_buyMenu);
             _menuShown = false;
+            MarketStand.MenuCurrentlyOpened = false;
         }
     }
 
