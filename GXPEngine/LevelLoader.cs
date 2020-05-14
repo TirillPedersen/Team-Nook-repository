@@ -53,6 +53,11 @@ class LevelLoader : GameObject
                         Ground ground = new Ground(column * _tileWidth, row * _tileHeight);
                         AddChild(ground);
                         break;
+
+                    case 2:
+                        GarbageCan garbageCan= new GarbageCan(column * _tileWidth, row * _tileHeight);
+                        AddChild(garbageCan);
+                        break;
                 }
             }
         }
