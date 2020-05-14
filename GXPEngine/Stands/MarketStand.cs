@@ -13,6 +13,7 @@ public class MarketStand : AnimationSprite
     private float _mouseY;
     public Vec2 _position;
     public bool ProximityToStand;
+    protected bool hoveringOverStand;
 
     public MarketStand(float givenX, float givenY, string fileName, float givenRotation = 0, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
     {
@@ -21,16 +22,17 @@ public class MarketStand : AnimationSprite
         SetOrigin(width / 2, height / 2);
         rotation = givenRotation;
         ProximityToStand = false;
+        hoveringOverStand = false;
     }
 
 
-    private void getMousePos()
+    protected void getMousePos()
     {
         _mouseX = LevelLoader.Character.CharacterOffset.x + ((Input.mouseX - game.width / 2) + LevelLoader.Character.CalculateCharacterOffset().x);
         _mouseY = LevelLoader.Character.CharacterOffset.y + ((Input.mouseY - game.height / 2) + LevelLoader.Character.CalculateCharacterOffset().y);
     }
 
-    void mouseHover()
+    protected void mouseHover()
     {
         Vec2 hoverDistanceMouseCharacter = new Vec2(_mouseX - LevelLoader.Character.Position.x, _mouseY - LevelLoader.Character.Position.y);
 
@@ -42,6 +44,7 @@ public class MarketStand : AnimationSprite
         {
             SetFrame(0);
             ProximityToStand = true;
+            hoveringOverStand = false;
         }
         else if (_mouseX >= x - width / 2
             && _mouseX <= x + width / 2
@@ -51,17 +54,13 @@ public class MarketStand : AnimationSprite
         {
             SetFrame(1);
             ProximityToStand = false;
+            hoveringOverStand = true;
         }
         else
         {
             SetFrame(0);
             ProximityToStand = false;
+            hoveringOverStand = false;
         }
-    }
-
-    protected void Update()
-    {
-        getMousePos();
-        mouseHover();
     }
 }
