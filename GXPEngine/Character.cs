@@ -55,6 +55,11 @@ namespace GXPEngine
             }
         }
 
+        public Vec2 GetVelocity()
+        {
+            return _velocity;
+        }
+
         private void PlayerInput()
         {
             if (Input.GetKey(Key.W)) PlayerMovement(0);

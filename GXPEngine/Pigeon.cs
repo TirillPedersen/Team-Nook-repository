@@ -9,6 +9,7 @@ public class Pigeon : AnimationSprite
     private short _currentlyUsedFrame, _frameCounter;
     float speed = 11.1f;
     private bool AllowPigeonsToSpawn;
+    private Vec2 PigToPlayer;
 
     public Pigeon(float givenX, float givenY, float givenRotation) : base("pigeon.png", 3, 2)
     {
@@ -21,14 +22,21 @@ public class Pigeon : AnimationSprite
     private void ScarePigeon()
     {
         Vec2 DistanceToPigeons = new Vec2(x - LevelLoader.Character.Position.x, y - LevelLoader.Character.Position.y);
-        if (DistanceToPigeons.Length() < 100)
+        if (DistanceToPigeons.Length() < 150 && AllowPigeonsToSpawn)
         {
             AllowPigeonsToSpawn = false;
-            Move(speed, 0);
+            PigToPlayer = new Vec2(x - LevelLoader.Character.Position.x, y - LevelLoader.Character.Position.y);
+            PigToPlayer.Normalize();
+            PigToPlayer = PigToPlayer * 15;
         }
 
         if (DistanceToPigeons.Length() > 1000 && !AllowPigeonsToSpawn) LateDestroy();
-        Console.WriteLine(DistanceToPigeons.Length());
+        else if (DistanceToPigeons.Length() < 1000 && !AllowPigeonsToSpawn)
+        {
+            x += PigToPlayer.x;
+            y += PigToPlayer.y;
+            rotation = PigToPlayer.GetAngleDegrees();
+        }
     }
 
     protected void Update()
