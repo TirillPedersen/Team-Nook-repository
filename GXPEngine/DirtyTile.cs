@@ -5,9 +5,9 @@ using System.Text;
 using GXPEngine;
 
 
-public class DirtyTile : AnimationSprite
+public class DirtyTile : Sprite
 {
-    public DirtyTile(float givenX, float givenY) : base("DirtyTile.png", 1, 1)
+    public DirtyTile(float givenX, float givenY) : base("DirtyTile.png")
     {
         SetXY(givenX, givenY);
     }

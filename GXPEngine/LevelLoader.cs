@@ -127,6 +127,12 @@ class LevelLoader : GameObject
                         AddChild(carousel);
                         CollisionObjectList.Add(carousel);
                         break;
+
+                    case "Pigeon":
+                        Pigeon pigeon = new Pigeon(currentTiledObject.X, currentTiledObject.Y, currentTiledObject.Rotation);
+                        AddChild(pigeon);
+                        CollisionObjectList.Add(pigeon);
+                        break;
                 }
             }
         }

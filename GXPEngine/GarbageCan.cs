@@ -5,9 +5,9 @@ using System.Text;
 using GXPEngine;
 
 
-public class GarbageCan : AnimationSprite
+public class GarbageCan : Sprite
 {
-    public GarbageCan(float givenX, float givenY) : base("GarbageCan.png", 1, 1)
+    public GarbageCan(float givenX, float givenY) : base("GarbageCan.png")
     {
         SetXY(givenX, givenY);
     }
