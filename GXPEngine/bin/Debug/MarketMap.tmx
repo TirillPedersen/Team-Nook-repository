@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="66">
+ <tileset firstgid="1" name="Bricks" tilewidth="128" tileheight="128" tilecount="1" columns="1">
+  <image source="bricks.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="2" name="GarbageCan" tilewidth="128" tileheight="128" tilecount="1" columns="1">
+  <image source="GarbageCan.png" width="128" height="128"/>
+ </tileset>
+ <objectgroup id="1" name="Object Layer 1" offsetx="3.0303" offsety="3.0303">
+  <object id="1" name="Character" x="1272" y="1024" width="128" height="128"/>
+  <object id="8" name="CheeseStand" x="1672" y="707" width="384" height="256"/>
+  <object id="6" name="MeatStand" x="1428" y="1512" width="384" height="256" rotation="180"/>
+  <object id="12" name="CheeseStand" x="1748" y="3072" width="384" height="256" rotation="180"/>
+  <object id="21" name="FruitStand" x="556" y="1118.79" width="384" height="256" rotation="300"/>
+  <object id="22" name="NPC" x="1881.21" y="2799.03" width="128" height="128" rotation="270"/>
+  <object id="23" name="NPC" x="2040.18" y="1172.49" width="128" height="128" rotation="180"/>
+  <object id="24" name="tableWithBenches" x="2548" y="1912" width="384" height="256"/>
+  <object id="25" name="Carousel" x="2223.76" y="2512" width="384" height="256"/>
+  <object id="27" name="FishStand" x="445.879" y="1722.91" width="384" height="256" rotation="270"/>
+  <object id="32" name="tableWithBenches" x="2448" y="1912" width="384" height="256"/>
+  <object id="35" name="CheeseStand" x="1048" y="727" width="384" height="256"/>
+  <object id="36" name="MeatStand" x="2098" y="1512" width="384" height="256" rotation="180"/>
+  <object id="37" name="CheeseStand" x="2308" y="735" width="384" height="256"/>
+  <object id="38" name="MeatStand" x="2768" y="1512" width="384" height="256" rotation="180"/>
+  <object id="39" name="FishStand" x="3500" y="1020" width="384" height="256" rotation="50"/>
+  <object id="40" name="CheeseStand" x="2888" y="767" width="384" height="256"/>
+  <object id="41" name="FishStand" x="3732" y="1586" width="384" height="256" rotation="90"/>
+  <object id="42" name="tableWithBenches" x="1948" y="1912" width="384" height="256"/>
+  <object id="43" name="tableWithBenches" x="2956" y="2144.61" width="384" height="256"/>
+  <object id="44" name="tableWithBenches" x="3022.67" y="2508.24" width="384" height="256"/>
+  <object id="45" name="FishStand" x="3740" y="2286" width="384" height="256" rotation="90"/>
+  <object id="46" name="FishStand" x="2801.03" y="3307.45" width="384" height="256" rotation="180"/>
+  <object id="47" name="CheeseStand" x="1098" y="3072" width="384" height="256" rotation="180"/>
+  <object id="48" name="CheeseStand" x="606" y="2630" width="384" height="256" rotation="270"/>
+  <object id="49" name="tableWithBenches" x="1471.15" y="2184" width="384" height="256"/>
+  <object id="50" name="FishStand" x="3473.76" y="3113.52" width="384" height="256" rotation="140"/>
+  <object id="51" name="tableWithBenches" x="1298.42" y="2623.39" width="384" height="256"/>
+  <object id="52" name="NPC" x="3229.45" y="2838.91" width="128" height="128" rotation="270"/>
+  <object id="53" name="NPC" x="2571.88" y="1105.58" width="128" height="128" rotation="180"/>
+  <object id="54" name="NPC" x="3408.24" y="2741.94" width="128" height="128" rotation="270"/>
+  <object id="55" name="NPC" x="2380.97" y="2941.94" width="128" height="128" rotation="270"/>
+ </objectgroup>
+ <layer id="4" name="Tile Layer 1" width="32" height="32">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+</map>
