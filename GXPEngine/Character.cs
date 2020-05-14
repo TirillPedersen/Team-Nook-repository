@@ -105,7 +105,6 @@ namespace GXPEngine
             }
             else if (tempDeltaAngle >= -6 && tempDeltaAngle <= -1) rotation -= 0.75f;
             else if (tempDeltaAngle <= 6 && tempDeltaAngle > 1) rotation += 0.75f;
-            Console.WriteLine(tempDeltaAngle % 360);
         }
 
         private void BoundaryCollision()

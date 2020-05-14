@@ -26,17 +26,10 @@ public class Pigeon : AnimationSprite
             AllowPigeonsToSpawn = false;
             Move(speed, 0);
         }
-    }
 
-    private void destroySelf()
-    {
-        if (x < LevelLoader.Character.Position.x - game.width / 2 || x > LevelLoader.Character.Position.x + game.width / 2 || y > LevelLoader.Character.Position.y - game.height / 2 || y < LevelLoader.Character.Position.y + game.height / 2)
-        {
-            Console.WriteLine(x);
-            if(!AllowPigeonsToSpawn) LateDestroy();
-        }
+        if (DistanceToPigeons.Length() > 1000 && !AllowPigeonsToSpawn) LateDestroy();
+        Console.WriteLine(DistanceToPigeons.Length());
     }
-
 
     protected void Update()
     {
@@ -51,7 +44,6 @@ public class Pigeon : AnimationSprite
         else _frameCounter++;
 
         ScarePigeon();
-        destroySelf();
     }
 }
 
