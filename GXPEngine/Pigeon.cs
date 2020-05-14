@@ -8,27 +8,32 @@ public class Pigeon : AnimationSprite
 {
     private short _currentlyUsedFrame, _frameCounter;
     float speed = 11.1f;
+    private bool AllowPigeonsToSpawn;
 
     public Pigeon(float givenX, float givenY, float givenRotation) : base("pigeon.png", 3, 2)
     {
         SetXY(givenX, givenY);
         SetOrigin(width / 2, height / 2);
         rotation = givenRotation;
+        AllowPigeonsToSpawn = true;
     }
 
     private void ScarePigeon()
     {
-        //if (x - LevelLoader.Character.Position.x => -100 && x - Player.X =< 0) || (x - Player.X => 100 && x - Player.X => 0)
-        //{
-        //    Move(speed, 0);
-        //}
+        Vec2 DistanceToPigeons = new Vec2(x - LevelLoader.Character.Position.x, y - LevelLoader.Character.Position.y);
+        if (DistanceToPigeons.Length() < 100)
+        {
+            AllowPigeonsToSpawn = false;
+            Move(speed, 0);
+        }
     }
 
-    private void destroySelf() 
+    private void destroySelf()
     {
-        if (x < 0 || x > 1920 || y > 1080 || y < 0)
+        if (x < LevelLoader.Character.Position.x - game.width / 2 || x > LevelLoader.Character.Position.x + game.width / 2 || y > LevelLoader.Character.Position.y - game.height / 2 || y < LevelLoader.Character.Position.y + game.height / 2)
         {
-            LateDestroy();
+            Console.WriteLine(x);
+            if(!AllowPigeonsToSpawn) LateDestroy();
         }
     }
 
@@ -47,7 +52,6 @@ public class Pigeon : AnimationSprite
 
         ScarePigeon();
         destroySelf();
-        Console.WriteLine(x);
     }
 }
 
