@@ -41,6 +41,7 @@
     <Compile Include="GarbageCan.cs" />
     <Compile Include="HUD.cs" />
     <Compile Include="NPC bois.cs" />
+    <Compile Include="Pigeon.cs" />
     <Compile Include="Stands\CheeseStand.cs" />
     <Compile Include="Stands\FishStand.cs" />
     <Compile Include="Fonty.cs" />
