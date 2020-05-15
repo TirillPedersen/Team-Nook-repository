@@ -24,6 +24,7 @@ namespace GXPEngine
         PrivateFontCollection PFC;
         private Font _ownFontClock;
         private Font _ownFontText;
+        private Sprite tutorial;
      
 
         private Sound _backgroundMusic;
@@ -82,6 +83,12 @@ namespace GXPEngine
             _backgroundMusic = new Sound("backgroundSounds.mp3", true, true);
             _backgroundSC = _backgroundMusic.Play();
             _backgroundSC.Volume = 0.35f;
+
+            //Tutorial
+            tutorial = new Sprite("Tutorial.png");
+            tutorial.SetOrigin(tutorial.width/2, tutorial.height/2);
+            tutorial.SetXY(game.width / 2, game.height / 2);
+            AddChild(tutorial);
         }
 
         public void ShowProximityInfo()
@@ -135,6 +142,7 @@ namespace GXPEngine
             ShowProximityInfo();
             drawClock();
             //PlayMusic();
+            if (Input.GetMouseButtonDown(0)) RemoveChild(tutorial);
         }
     }
 }

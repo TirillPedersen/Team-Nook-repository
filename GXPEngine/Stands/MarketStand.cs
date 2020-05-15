@@ -15,6 +15,7 @@ public class MarketStand : AnimationSprite
     public bool ProximityToStand;
     protected bool hoveringOverStand;
     public static bool MenuCurrentlyOpened = false;
+    public static short BuyShift = 327;
 
     public MarketStand(float givenX, float givenY, string fileName, float givenRotation = 0, byte cols = 2, byte rows = 1) : base(fileName, cols, rows)
     {
