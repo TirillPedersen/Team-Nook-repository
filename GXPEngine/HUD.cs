@@ -24,6 +24,7 @@ namespace GXPEngine
         PrivateFontCollection PFC;
         private Font _ownFontClock;
         private Font _ownFontText;
+        private Sound _backgroundMusic;
 
         public HUD()
         {
@@ -73,6 +74,15 @@ namespace GXPEngine
             _chatBox.SetOrigin(_chatBox.width / 2, _chatBox.height / 2);
             _chatBox.SetXY(game.width/2, game.height - 50);
             AddChild(_chatBox);
+
+            //sound
+            _backgroundMusic = new Sound("backgroundSounds.mp3");
+        }
+
+        private void PlayMusic()
+        {
+            SoundChannel channel = _backgroundMusic.Play();
+            //channel.Frequency = 110000;
         }
 
         public void ShowProximityInfo()
@@ -125,6 +135,7 @@ namespace GXPEngine
             _clock.Clear(Color.Transparent);
             ShowProximityInfo();
             drawClock();
+            PlayMusic();
         }
     }
 }
