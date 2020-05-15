@@ -43,18 +43,22 @@ namespace GXPEngine
                 MarketStand.MenuCurrentlyOpened = true;
             }
 
-            if (_menuShown && HUD.MenuHover(_exitButton) && Input.GetMouseButtonDown(0))
-            {
-                LevelLoader.hud.RemoveChild(_buyMenu);
-                LevelLoader.hud.RemoveChild(_exitButton);
-                _menuShown = false;
-                MarketStand.MenuCurrentlyOpened = false;
-            }
 
-            if (_menuShown && Input.GetMouseButtonDown(0) && Input.mouseX >= 1010 && Input.mouseX <= 1375 && Input.mouseY >= 275 && Input.mouseY <= 800)
+            else if (MarketStand.MenuCurrentlyOpened && _menuShown && Input.GetMouseButtonDown(0) && Input.mouseX >= 1010 && Input.mouseX <= 1375 && Input.mouseY >= 275 && Input.mouseY <= 800)
             {
                 LevelLoader.hud.RemoveChild(_buyMenu);
                 LevelLoader.hud.AddChild(_buyMenu2);
+                LevelLoader.hud.AddChild(_exitButton);
+                MarketStand.MenuCurrentlyOpened = false;
+            }
+
+            if (_menuShown && HUD.MenuHover(_exitButton) && Input.GetMouseButtonDown(0))
+            {
+                LevelLoader.hud.RemoveChild(_buyMenu);
+                LevelLoader.hud.RemoveChild(_buyMenu2);
+                LevelLoader.hud.RemoveChild(_exitButton);
+                _menuShown = false;
+                MarketStand.MenuCurrentlyOpened = false;
             }
 
             if (_menuShown && Input.GetMouseButtonDown(0) && Input.mouseX >= 600 && Input.mouseX <= 650 && Input.mouseY >= 380 && Input.mouseY <= 410)
