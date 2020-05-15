@@ -11,6 +11,9 @@ public class Pigeon : AnimationSprite
     private bool AllowPigeonsToSpawn;
     private Vec2 PigToPlayer;
 
+    private Sound _flySound;
+    private SoundChannel _flySC;
+
     public Pigeon(float givenX, float givenY, float givenRotation) : base("pigeon.png", 3, 2)
     {
         SetXY(givenX, givenY);
@@ -28,6 +31,10 @@ public class Pigeon : AnimationSprite
             PigToPlayer = new Vec2(x - LevelLoader.Character.Position.x, y - LevelLoader.Character.Position.y);
             PigToPlayer.Normalize();
             PigToPlayer = PigToPlayer * speed;
+
+            _flySound = new Sound("pigeon.mp3", false, false);
+            _flySC = _flySound.Play();
+            _flySC.Volume = 0.25f;
         }
 
         if (DistanceToPigeons.Length() > 1000 && !AllowPigeonsToSpawn) LateDestroy();
@@ -36,7 +43,10 @@ public class Pigeon : AnimationSprite
             x += PigToPlayer.x;
             y += PigToPlayer.y;
             rotation = PigToPlayer.GetAngleDegrees();
+          
+      
         }
+
     }
 
     protected void Update()
