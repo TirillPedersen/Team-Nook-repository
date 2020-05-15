@@ -45,7 +45,6 @@
     <Compile Include="Pigeon.cs" />
     <Compile Include="Stands\CheeseStand.cs" />
     <Compile Include="Stands\FishStand.cs" />
-    <Compile Include="Fonty.cs" />
     <Compile Include="LevelLoader.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="Stands\MarketStand.cs" />
